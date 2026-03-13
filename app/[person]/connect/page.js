@@ -1,23 +1,9 @@
-"use client";
+import { getPersonContent } from "@/lib/content";
+import CopyEmail from "@/components/CopyEmail";
 
-import { useEffect, useState } from "react";
-
-export default function ConnectPage({ params }) {
-  const [connectData, setConnectData] = useState(null);
-  const [person, setPerson] = useState(null);
-
-  useEffect(() => {
-    async function load() {
-      const resolvedParams = await params;
-      setPerson(resolvedParams.person);
-      const res = await fetch(`/api/content/${resolvedParams.person}/connect`);
-      const data = await res.json();
-      setConnectData(data);
-    }
-    load();
-  }, [params]);
-
-  if (!connectData) return null;
+export default async function ConnectPage({ params }) {
+  const { person } = await params;
+  const connectData = getPersonContent(person, "connect");
 
   return (
     <>
@@ -31,8 +17,18 @@ export default function ConnectPage({ params }) {
         </p>
       </section>
 
+      {/* Email Click-to-Copy */}
+      <section className="flex flex-col items-center gap-4 mt-10 mb-10 px-4">
+        <h2 className="emailProvoke text-[#1B1B19] text-[2.5em] font-extrabold tracking-wide mb-4">
+          Mail me directly
+        </h2>
+        {connectData.emails.map((email) => (
+          <CopyEmail key={email} email={email} />
+        ))}
+      </section>
+
       {/* Social Links */}
-      <section className="flex flex-row justify-center items-center gap-16 mt-10 mb-16">
+      <section className="flex flex-row flex-wrap justify-center items-center gap-10 sm:gap-16 mt-10 mb-16 px-4">
         {connectData.socialLinks.map((social) => (
           <a
             key={social.platform}
@@ -41,78 +37,23 @@ export default function ConnectPage({ params }) {
             rel="noopener noreferrer"
             className="group flex flex-col items-center"
           >
-            <div className="bg-[#1B1B19] rounded-full p-6 hover:bg-[#333] hover:opacity-80 transition-all duration-300">
-              <span className="text-[4em] text-[#E2D9C8] group-hover:scale-110 transition-transform">{social.platform}</span>
+            <div className="bg-[#1B1B19] rounded-full p-5 hover:opacity-80 transition-all duration-300">
+              <ion-icon name={social.icon} style={{ fontSize: "2.5em", color: "#E2D9C8" }}></ion-icon>
             </div>
-            <span className="mt-2 text-[#1B1B19] text-[1.2em] font-bold">{social.platform}</span>
+            <span className="mt-2 text-[#1B1B19] text-[1.1em] font-bold">{social.platform}</span>
           </a>
         ))}
       </section>
 
-      {/* Contact Form */}
-      <section className="flex flex-col lg:flex-row items-center mt-10 px-4 justify-between gap-10">
-        <div className="relative w-full max-w-[500px] rounded-[20px] p-6 bg-[#e6ddc6] shadow-[inset_8px_8px_20px_#c8c1ae,inset_-8px_-8px_20px_#fef9ef] opacity-95">
-          <div className="absolute inset-0 z-0 bg-cover mix-blend-overlay brightness-90 pointer-events-none rounded-[20px]" />
-          <div className="relative z-10">
-            <h2 className="emailText text-[#1B1B19] text-[2em] font-extrabold mb-4 text-center tracking-wider">
-              {connectData.formTitle}
-            </h2>
-            <form className="flex flex-col gap-4">
-              <div>
-                <label htmlFor="name" className="block text-[#1B1B19] text-[1em] mb-1">
-                  What shall I call you as?
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  className="w-full p-3 rounded-[10px] bg-[#f8f1de] text-[#1B1B19] border border-[#d1c3a3] shadow-inner outline-none focus:border-[#ffc300] focus:outline-none transition-all placeholder:text-[#222]"
-                  placeholder="Your name please"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-[#1B1B19] text-[1em] mb-1">
-                  Your Email Please!
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="w-full p-3 rounded-[10px] bg-[#f8f1de] text-[#1B1B19] border border-[#d1c3a3] shadow-inner outline-none focus:border-[#ffc300] focus:outline-none transition-all"
-                  placeholder="Your email please"
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-[#1B1B19] text-[1em] mb-1">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={3}
-                  required
-                  className="w-full p-3 rounded-[12px] border border-[#d1c3a3] bg-[#f8f1de] text-[#1B1B19] shadow-inner resize-none outline-none focus:border-[#ffc300] focus:outline-none transition-all"
-                />
-              </div>
-              <button
-                type="submit"
-                className="submitButton mt-2 w-full bg-[#E2D9C8] text-[#1B1B19] text-[1.1em] font-extrabold py-3 rounded-[12px] hover:bg-[#ffc300] transition-all shadow-md"
-              >
-                Send
-              </button>
-            </form>
-          </div>
+      {/* Contact Image */}
+      {connectData.contactImage && (
+        <div className="flex justify-center mb-10">
+          <div
+            className="bgConnectImage relative h-[350px] w-[350px] bg-cover bg-center rounded-[12px] opacity-55 mix-blend-darken border-2 border-[#222]"
+            style={{ backgroundImage: `url(${connectData.contactImage})` }}
+          />
         </div>
-        <span className="emailProvoke inline-block bg-[#1B1B19] max-w-[250px] text-[#E2D9C8] text-center text-[2em] font-extrabold px-4 py-1 rounded-[10px] tracking-wide opacity-90 align-baseline mx-1">
-          {connectData.emailPrompt}
-        </span>
-        <div
-          className="bgConnectImage relative h-[450px] w-[450px] bg-cover bg-center rounded-[12px] opacity-55 mix-blend-darken border-2 border-[#222]"
-          style={{ backgroundImage: `url(${connectData.contactImage})` }}
-        />
-      </section>
+      )}
 
       {/* Separator */}
       <div className="w-full border-t-2 border-[#222] mt-10" />

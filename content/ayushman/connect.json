@@ -1,8 +1,10 @@
 {
   "heading": "CONNECT",
   "description": "Let's connect! Find me on your favorite platforms or drop me a message directly.",
-  "emailPrompt": "Come-on, Mail me directly clicking the SEND button!",
-  "formTitle": "Drop Me an Email",
+  "emails": [
+    "ayushmandey1710@gmail.com",
+    "ayushman@elixpo.org"
+  ],
   "contactImage": "/assets/ayushman/publication/sq-1.png",
   "socialLinks": [
     { "platform": "GitHub", "url": "https://github.com/Circuit-Overtime", "icon": "logo-github", "hoverColor": "#333" },

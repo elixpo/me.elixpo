@@ -1,5 +1,4 @@
 import { getPersonContent, getValidPersons } from "@/lib/content";
-import { notFound } from "next/navigation";
 import MenuOverlay from "@/components/MenuOverlay";
 import Footer from "@/components/Footer";
 import { FadeInReveal, InertiaScroll } from "@/components/Animations";
@@ -19,11 +18,6 @@ export async function generateMetadata({ params }) {
 
 export default async function PersonLayout({ children, params }) {
   const { person } = await params;
-  const validPersons = getValidPersons();
-  if (!validPersons.includes(person)) {
-    notFound();
-  }
-
   const profile = getPersonContent(person, "profile");
 
   return (

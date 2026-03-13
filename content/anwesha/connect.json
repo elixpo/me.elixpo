@@ -1,8 +1,9 @@
 {
   "heading": "CONNECT",
   "description": "Anwesha's portfolio: where code meets Cupid! She's falling in love — with new ideas, cool projects, and maybe your message too.",
-  "emailPrompt": "Come-on, Mail me directly clicking the SEND button!",
-  "formTitle": "Drop Me an Email",
+  "emails": [
+    "anwesha@example.com"
+  ],
   "contactImage": "/assets/anwesha/publication/sq-1.png",
   "socialLinks": [
     { "platform": "GitHub", "url": "https://github.com/CSE-Anwesha", "icon": "logo-github", "hoverColor": "#333" },
