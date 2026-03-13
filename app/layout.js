@@ -23,7 +23,7 @@ export const metadata = {
     description: "Personalized portfolio showcase for Elixpo organization members",
     images: ["/assets/og-image.png"],
   },
-  metadataBase: new URL("https://elixpo.com"),
+  metadataBase: new URL("https://me.elixpo.com"),
 };
 
 export default function RootLayout({ children }) {
