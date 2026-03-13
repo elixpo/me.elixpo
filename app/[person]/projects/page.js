@@ -1,6 +1,12 @@
 import { getPersonContent } from "@/lib/content";
 import ContactBanner from "@/components/ContactBanner";
 
+export async function generateMetadata({ params }) {
+  const { person } = await params;
+  const profile = getPersonContent(person, "profile");
+  return { title: `${profile.siteName} - Projects` };
+}
+
 export default async function ProjectsPage({ params }) {
   const { person } = await params;
   const projectsData = getPersonContent(person, "projects");

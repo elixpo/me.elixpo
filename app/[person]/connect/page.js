@@ -1,6 +1,12 @@
 import { getPersonContent } from "@/lib/content";
 import CopyEmail from "@/components/CopyEmail";
 
+export async function generateMetadata({ params }) {
+  const { person } = await params;
+  const profile = getPersonContent(person, "profile");
+  return { title: `${profile.siteName} - Connect` };
+}
+
 export default async function ConnectPage({ params }) {
   const { person } = await params;
   const connectData = getPersonContent(person, "connect");
