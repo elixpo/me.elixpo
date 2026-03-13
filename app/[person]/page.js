@@ -42,7 +42,7 @@ export default async function HomePage({ params }) {
 
       {/* Intro Section */}
       <section className="introSection relative mt-[10px] w-full flex flex-col border-b-2 border-[#111] p-2 sm:p-5">
-        <div className="nameContainer text-2xl sm:text-6xl md:text-8xl lg:text-[12em] xl:text-[20em] w-full h-[50px] sm:h-[250px] md:h-[300px] lg:h-[350px] flex justify-center items-center bg-[#1B1B19] text-center opacity-90 select-none rounded-[10px] sm:rounded-[15px] tracking-[2px] sm:tracking-[3px] md:tracking-[5px]">
+        <div className="nameContainer text-base sm:text-6xl md:text-8xl lg:text-[12em] xl:text-[20em] w-full py-2 sm:py-0 sm:h-[250px] md:h-[300px] lg:h-[350px] flex justify-center items-center bg-[#1B1B19] text-center opacity-90 select-none rounded-[10px] sm:rounded-[15px] tracking-[2px] sm:tracking-[3px] md:tracking-[5px]">
           <p className="text-[#E2D9C8]">{home.intro.heroName}</p>
         </div>
 
@@ -187,7 +187,7 @@ export default async function HomePage({ params }) {
               style={{ backgroundImage: `url(${home.techSection.images.wand})` }}
             />
             <p className="text1row1col1techTracks h-auto sm:h-full w-full sm:w-auto flex items-center justify-center sm:justify-start text-[#1B1B19] text-4xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-[13em] font-extrabold leading-tight sm:leading-[80px] md:leading-[120px] lg:leading-[160px] text-center sm:text-left">
-              <span>THE<br />TECHY<br />SYNAPSE</span>
+              <span className="sm:hidden">THE TECHY SYNAPSE</span><span className="hidden sm:inline">THE<br />TECHY<br />SYNAPSE</span>
             </p>
           </div>
           <div
