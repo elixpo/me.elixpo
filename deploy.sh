@@ -18,7 +18,7 @@ for cmd in "$@"; do
   case "$cmd" in
     build)
       echo ">> Building Next.js static export..."
-      npx next build
+      sudo npx next build
       echo ">> Build complete. Output in out/"
       ;;
     deploy)
@@ -27,7 +27,7 @@ for cmd in "$@"; do
         exit 1
       fi
       echo ">> Deploying to Cloudflare Pages..."
-      npx wrangler pages deploy out
+      sudo npx wrangler pages deploy out
       echo ">> Deploy complete."
       ;;
     *)
