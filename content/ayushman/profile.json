@@ -1,8 +1,9 @@
 {
   "name": "AYUSHMAN",
-  "siteName": "Elixpo",
+  "siteName": "@elixpo",
+  "siteDescription": "Developer at Elixpo",
   "location": "WB,IN",
-  "email": "ayushbhatt633@gmail.com",
+  "email": "ayushman@elixpo.com",
   "socials": [
     { "platform": "github", "url": "https://github.com/Circuit-Overtime", "icon": "logo-github" },
     { "platform": "linkedin", "url": "https://linkedin.com/in/elixpo", "icon": "logo-linkedin" },

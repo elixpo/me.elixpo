@@ -147,12 +147,12 @@ export default function LandingClient({ profiles }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.2 }}
         >
-          Personalized Portfolio of the Members of the Elixpo Organisation
+          Personalized Portfolio of Members of the Elixpo Organisation
         </motion.p>
       </motion.div>
 
       {/* Person Cards — horizontal scroll when many */}
-      <div className="relative z-10 flex flex-row gap-8 sm:gap-12 px-8 overflow-x-auto max-w-full scrollbar-hide">
+      <div className="relative z-10 flex flex-row gap-8 mt-[-2rem] sm:gap-12 px-8 overflow-x-auto max-w-full scrollbar-hide">
         {profiles.map((profile, index) => (
           <motion.div
             key={profile.slug}
@@ -189,6 +189,9 @@ export default function LandingClient({ profiles }) {
                   style={{ fontFamily: "'Pathway Gothic One', sans-serif" }}
                 >
                   {profile.siteName}
+                </p>
+                <p className="text-[#888] text-xs mt-2 tracking-[1px]">
+                  {profile.siteDescription}
                 </p>
               </div>
 
