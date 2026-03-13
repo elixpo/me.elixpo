@@ -186,11 +186,8 @@ export default async function HomePage({ params }) {
               style={{ backgroundImage: `url(${home.techSection.images.wand})` }}
             />
             <p className="text1row1col1techTracks h-auto sm:h-full flex items-center text-[#1B1B19] text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-[13em] font-extrabold leading-tight sm:leading-[80px] md:leading-[120px] lg:leading-[160px] text-center sm:text-left">
-              {home.techSection.heading.split(" ").map((word, i) => (
-                <span key={i}>
-                  {word}
-                  {i < home.techSection.heading.split(" ").length - 1 && <br />}
-                </span>
+              {home.techSection.heading.split(" ").map((word, i, arr) => (
+                <span key={i}>{word}{i < arr.length - 1 && <br />}</span>
               ))}
             </p>
           </div>
