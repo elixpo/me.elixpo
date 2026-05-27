@@ -19,11 +19,6 @@ export default async function HomePage({ params }) {
       <SpotlightScroller>
         {spotlight.map((news, index) => {
           const midIndex = Math.floor(spotlight.length / 2);
-          // Generate spotlight imagery on the fly via Pollinations when a prompt is given;
-          // fall back to a static image path otherwise.
-          const imgSrc = news.prompt
-            ? `https://image.pollinations.ai/prompt/${encodeURIComponent(news.prompt)}?width=600&height=400&nologo=true&seed=${index + 1}`
-            : news.image;
           return (
             <span key={index} className="contents">
               {index === midIndex && (
@@ -36,7 +31,7 @@ export default async function HomePage({ params }) {
               <div className="featuredTile relative h-[280px] sm:h-[350px] w-[250px] sm:w-[400px] flex-shrink-0 flex flex-col mt-[10px] px-[10px] sm:px-[20px] overflow-hidden">
                 <div
                   className="featuredImage hoverScale h-[120px] sm:h-[150px] w-full bg-cover bg-center rounded-[12px]"
-                  style={{ backgroundImage: `url(${imgSrc})` }}
+                  style={{ backgroundImage: `url(${news.image})` }}
                 />
                 <p className="featureName font-[Canopee,serif] text-base sm:text-[1.6em] tracking-wide mt-2 sm:mt-3 leading-tight truncate">
                   {news.title}
