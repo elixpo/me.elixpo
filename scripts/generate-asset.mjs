@@ -42,8 +42,9 @@ async function generate(name, token) {
   const { meta, prompt } = parsePromptFile(file);
   if (!meta.output) throw new Error(`${file}: 'output' missing in frontmatter`);
 
-  const width = parseInt(meta.width || "1024", 10);
-  const height = parseInt(meta.height || "1024", 10);
+  const MAX = 768; // cap generation + output resolution
+  const width = Math.min(parseInt(meta.width || "768", 10), MAX);
+  const height = Math.min(parseInt(meta.height || "768", 10), MAX);
   const model = meta.model || "gptimage";
   const quality = meta.quality || "high";
 
@@ -58,8 +59,13 @@ async function generate(name, token) {
   const buf = Buffer.from(await res.arrayBuffer());
 
   fs.mkdirSync(path.dirname(meta.output), { recursive: true });
-  await sharp(buf).webp({ quality: 82 }).toFile(meta.output);
-  console.log(`saved ${meta.output}`);
+  // Downscale to the capped size if the API returned larger, then compress to WebP.
+  await sharp(buf)
+    .resize(width, height, { fit: "cover", withoutEnlargement: true })
+    .webp({ quality: 72, effort: 6 })
+    .toFile(meta.output);
+  const { size } = fs.statSync(meta.output);
+  console.log(`saved ${meta.output} (${(size / 1024).toFixed(0)} KB)`);
 }
 
 async function main() {

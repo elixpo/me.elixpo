@@ -1,7 +1,7 @@
 ---
 output: public/assets/ayushman/spotlight/elixpo-search.webp
-width: 1024
-height: 512
+width: 768
+height: 384
 model: gptimage
 quality: high
 ---
