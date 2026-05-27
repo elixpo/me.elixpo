@@ -19,6 +19,11 @@ export default async function HomePage({ params }) {
       <SpotlightScroller>
         {spotlight.map((news, index) => {
           const midIndex = Math.floor(spotlight.length / 2);
+          // Generate spotlight imagery on the fly via Pollinations when a prompt is given;
+          // fall back to a static image path otherwise.
+          const imgSrc = news.prompt
+            ? `https://image.pollinations.ai/prompt/${encodeURIComponent(news.prompt)}?width=600&height=400&nologo=true&seed=${index + 1}`
+            : news.image;
           return (
             <span key={index} className="contents">
               {index === midIndex && (
@@ -31,7 +36,7 @@ export default async function HomePage({ params }) {
               <div className="featuredTile relative h-[280px] sm:h-[350px] w-[250px] sm:w-[400px] flex-shrink-0 flex flex-col mt-[10px] px-[10px] sm:px-[20px] overflow-hidden">
                 <div
                   className="featuredImage hoverScale h-[120px] sm:h-[150px] w-full bg-cover bg-center rounded-[12px]"
-                  style={{ backgroundImage: `url(${news.image})` }}
+                  style={{ backgroundImage: `url(${imgSrc})` }}
                 />
                 <p className="featureName font-[Canopee,serif] text-base sm:text-[1.6em] tracking-wide mt-2 sm:mt-3 leading-tight truncate">
                   {news.title}
@@ -90,68 +95,52 @@ export default async function HomePage({ params }) {
       </section>
       )}
 
-      {/* Website Section */}
+      {/* Behind Elixpo Section */}
       <section id="websiteSection" className="websiteSection relative mt-[10px] w-full flex flex-col border-b-2 border-[#111] p-2 sm:p-4 md:p-5">
-        <div className="websiteContainer flex flex-col lg:flex-row items-center h-auto lg:h-[250px] w-full mt-10 justify-between gap-5">
-          <div className="relative websiteTextContainer text-3xl sm:text-6xl md:text-8xl lg:text-[12em] xl:text-[16em] w-full lg:w-[70%] flex justify-center items-center h-[80px] sm:h-[200px] lg:h-[250px] bg-[#1B1B19] text-center opacity-90 select-none rounded-[10px] sm:rounded-[15px]">
-            <p className="text-[#E2D9C8] tracking-wide">WEBSITE</p>
+        {/* Heading + seal */}
+        <div className="behindHeader flex flex-row items-stretch w-full mt-10 gap-4 sm:gap-6">
+          <div className="relative flex-1 flex items-center bg-[#1B1B19] opacity-90 select-none rounded-[10px] sm:rounded-[15px] px-5 sm:px-10 py-5 sm:py-8">
+            <p className="text-[#E2D9C8] font-[Canopee,serif] tracking-[2px] text-3xl sm:text-5xl md:text-6xl lg:text-[5.5em] leading-none">
+              BEHIND ELIXPO
+            </p>
           </div>
           <div
-            className="stampImage bg-cover bg-center h-[150px] sm:h-[200px] lg:h-full w-[150px] sm:w-[200px] lg:w-[250px] mx-auto lg:mx-0"
+            className="stampImage bg-cover bg-center rounded-[10px] sm:rounded-[15px] border-2 border-[#222] h-auto w-22.5 sm:w-37.5 lg:w-50 shrink-0"
             style={{ backgroundImage: `url(${home.websiteSection.images.seal})` }}
           />
         </div>
-        <div className="websiteInfoSection relative w-full flex flex-col lg:flex-row mt-5">
-          <div className="webCol1 w-full lg:w-[70%] flex flex-col gap-5 justify-around lg:border-r-2 border-[#888] p-2 sm:p-3 md:p-4">
-            <div className="webCol1Row1 flex flex-col lg:flex-row w-full gap-3">
-              <div className="slide1 items-center flex flex-col p-2 sm:p-3 md:p-4 lg:border-r-2 border-[#888] lg:mr-3">
-                <div
-                  className="slide1Img hoverScale bg-cover bg-center h-[150px] sm:h-[180px] md:h-[200px] w-full sm:w-[350px] md:w-[400px]"
-                  style={{ backgroundImage: `url(${home.websiteSection.images.owl})` }}
-                />
-                <p className="webCol1Row1Text1 text-[#1B1B19] text-left w-full text-base sm:text-lg md:text-xl lg:text-[1.8em] mt-3">
-                  Designed By
-                </p>
-                <p className="webDescription1 relative flex text-xs sm:text-sm md:text-base lg:text-[1.3em] text-left w-full sm:w-[350px] md:w-[400px] whitespace-normal break-words h-auto min-h-[30px]">
-                  {home.websiteSection.designedBy}
-                </p>
+
+        {/* Three story blocks */}
+        <div className="behindGrid grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 mt-8 sm:mt-12">
+          {[
+            { no: "01", label: "The Build", body: home.websiteSection.codeStory },
+            { no: "02", label: "The Roadmap", body: home.websiteSection.futurePlans },
+            { no: "03", label: "Credits", body: home.websiteSection.designedBy },
+          ].map((block, i) => (
+            <div key={i} className="behindBlock flex flex-col gap-3 lg:border-r-2 last:border-r-0 border-[#888]/40 lg:pr-6">
+              <div className="flex items-baseline gap-3">
+                <span className="fontNav text-[#888] text-2xl sm:text-3xl leading-none">{block.no}</span>
+                <h3 className="text-[#1B1B19] font-extrabold uppercase tracking-[2px] text-base sm:text-lg md:text-xl">
+                  {block.label}
+                </h3>
               </div>
-              <div className="slide2 items-center flex-col">
-                <div className="slide2text1 mt-3 text-2xl sm:text-3xl md:text-4xl lg:text-[5em]">Future Plans</div>
-                <div className="slide2description">
-                  <p className="webDescription2 relative flex text-[1.3em] sm:text-sm mt-3 md:text-base lg:text-[1.5em] text-left w-full sm:w-[350px] md:w-[400px] whitespace-normal break-words h-auto min-h-[50px]">
-                    {home.websiteSection.futurePlans}
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div
-              className="webCol1Row2 flex bg-cover bg-center h-[400px] sm:h-[600px] md:h-[800px] w-full p-4 sm:p-6 md:p-10"
-              style={{ backgroundImage: `url(${home.websiteSection.images.humanThink})` }}
-            />
-          </div>
-          <div className="webCol2 w-full lg:w-[30%] flex mt-2 flex-col items-center gap-5 p-2 sm:p-3 md:p-4">
-            <div className="webCol2text1 text-left w-full">
-              <div className="relative text-[#1B1B19] text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-[4em] font-extrabold line-through">
-                Wasting Time
-              </div>
-              <div className="relative text-[#1B1B19] leading-[50px] sm:leading-[70px] md:leading-[100px] text-3xl sm:text-4xl md:text-6xl lg:text-8xl xl:text-[10em] font-extrabold">
-                CODE
-              </div>
-            </div>
-            <div className="webCol2Desc1">
-              <p className="webDescription3 relative flex text-xs sm:text-sm md:text-base lg:text-lg xl:text-[1.8em] text-left w-full sm:w-[300px] md:w-[350px] whitespace-normal break-words h-auto min-h-[30px] lg:px-[10px]">
-                {home.websiteSection.codeStory}
+              <div className="h-0.5 bg-[#222] w-full" />
+              <p className="text-[#333] text-sm sm:text-base md:text-[1.15em] leading-relaxed tracking-[0.3px]">
+                {block.body}
               </p>
-              <a
-                href={`/${person}/projects`}
-                id="projectsRedirect"
-                className="visitCircle w-full sm:w-[300px] md:w-[350px] h-[80px] sm:h-[100px] text-lg sm:text-xl md:text-2xl lg:text-[3em] border-2 border-[#222] rounded-full mt-10 flex justify-center items-center cursor-pointer transition-all duration-300 hover:bg-[#1B1B19] hover:text-[#E2D9C8] hover:scale-105 mx-auto lg:ml-[20px]"
-              >
-                Visit Now
-              </a>
             </div>
-          </div>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div className="behindCta flex justify-center sm:justify-start mt-8 sm:mt-12">
+          <a
+            href={`/${person}/projects`}
+            id="projectsRedirect"
+            className="fontNav border-2 border-[#222] rounded-full px-8 sm:px-12 py-3 sm:py-4 text-base sm:text-lg md:text-[1.5em] tracking-[1px] text-[#1B1B19] flex justify-center items-center cursor-pointer transition-all duration-300 hover:bg-[#1B1B19] hover:text-[#E2D9C8] hover:scale-105"
+          >
+            Explore Projects
+          </a>
         </div>
       </section>
 
@@ -183,7 +172,7 @@ export default async function HomePage({ params }) {
             </div>
           </div>
         ))}
-      </section>
+      </DragScrollContainer>
 
       {/* Tech Section */}
       <section className="techTracks overflow-hidden w-full flex flex-col mt-10 pt-5 pb-5 justify-center select-none overflow-y-hidden">
