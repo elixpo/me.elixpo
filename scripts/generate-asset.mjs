@@ -59,11 +59,13 @@ async function generate(name, token) {
   const buf = Buffer.from(await res.arrayBuffer());
 
   fs.mkdirSync(path.dirname(meta.output), { recursive: true });
-  // Downscale to the capped size if the API returned larger, then compress to WebP.
-  await sharp(buf)
-    .resize(width, height, { fit: "cover", withoutEnlargement: true })
-    .webp({ quality: 72, effort: 6 })
-    .toFile(meta.output);
+  // Downscale to the capped size if the API returned larger, then encode by extension.
+  const ext = path.extname(meta.output).toLowerCase();
+  let pipeline = sharp(buf).resize(width, height, { fit: "cover", withoutEnlargement: true });
+  if (ext === ".png") pipeline = pipeline.png({ compressionLevel: 9 });
+  else if (ext === ".jpg" || ext === ".jpeg") pipeline = pipeline.jpeg({ quality: 82 });
+  else pipeline = pipeline.webp({ quality: 72, effort: 6 });
+  await pipeline.toFile(meta.output);
   const { size } = fs.statSync(meta.output);
   console.log(`saved ${meta.output} (${(size / 1024).toFixed(0)} KB)`);
 }
