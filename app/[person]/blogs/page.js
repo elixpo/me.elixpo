@@ -105,7 +105,7 @@ export default async function BlogsPage({ params }) {
                 ))}
               </div>
               <span className="blogArrow text-[#B63B12] text-lg sm:text-xl group-hover:translate-x-1 transition-transform duration-300">
-                Read on blogs.elixpo.com &rarr;
+                Read on LixBlogs &rarr;
               </span>
             </div>
           </a>
