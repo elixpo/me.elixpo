@@ -1,0 +1,18 @@
+{
+  "heading": "TALKS",
+  "description": "Speaking on open-source maintenance, contributor pipelines, and building sustainable communities.",
+  "sessions": [
+    {
+      "title": "How to Be the Contributor Maintainers Actually Want — Lessons from Pollinations.ai",
+      "venue": "GitHub Maintainer Month 2026",
+      "date": "May 2026",
+      "isNew": true
+    },
+    {
+      "title": "Building the Contributor Pipeline at Pollinations.ai",
+      "venue": "GitHub Open Source Friday",
+      "date": "Jun 2026",
+      "isNew": true
+    }
+  ]
+}

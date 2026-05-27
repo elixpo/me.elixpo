@@ -207,35 +207,125 @@ export default async function HomePage({ params }) {
               className="row1col2 relative w-full lg:w-[850px] h-[300px] sm:h-[350px] md:h-[400px] border-2 border-[#222] bg-cover bg-center mix-blend-multiply rounded-[25px]"
               style={{ backgroundImage: `url(${home.techSection.images.banner})` }}
             />
-            <div className="text1row1col1techTracks h-full flex flex-row flex-wrap items-left text-[#1B1B19] leading-[40px] sm:leading-[60px] md:leading-[75px] font-extrabold text-left w-full gap-4 sm:gap-6 md:gap-10">
-              {home.techSection.skills.map((skill, i) =>
-                skill.type === "icon" ? (
-                  <img
+            {home.techSection.reading ? (
+              <div className="readingList h-full flex flex-col justify-center w-full gap-1">
+                <p className="readingLabel text-[#1B1B19] font-extrabold uppercase tracking-[3px] text-xs sm:text-sm mb-3 sm:mb-5">
+                  Currently Reading
+                </p>
+                {home.techSection.reading.map((book, i) => (
+                  <div
                     key={i}
-                    width={40}
-                    height={40}
-                    className="sm:w-[50px] sm:h-[50px] md:w-[60px] md:h-[60px]"
-                    src={skill.src}
-                    alt={skill.alt}
-                  />
-                ) : (
-                  <p key={i} className="font-extrabold text-sm sm:text-base md:text-lg lg:text-xl xl:text-[2em]">
-                    {skill.label}
-                  </p>
-                )
-              )}
-            </div>
+                    className="readingItem group flex flex-row items-start gap-4 sm:gap-6 border-t-2 border-[#222] py-4 sm:py-5 last:border-b-2 transition-colors duration-300 hover:bg-[#1B1B19]/[0.04]"
+                  >
+                    <span className="readingNo fontNav text-[#888] text-2xl sm:text-4xl md:text-[2.2em] leading-none shrink-0 w-[36px] sm:w-[56px]">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div className="readingBody flex flex-col flex-1">
+                      <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-3">
+                        <p className="readingTitle font-[Canopee,serif] text-[#1B1B19] text-xl sm:text-2xl md:text-[1.9em] leading-tight tracking-[0.5px]">
+                          {book.title}
+                        </p>
+                        {book.status && (
+                          <span className="readingStatus shrink-0 self-start border-2 border-[#222] rounded-full bg-[#E2D9C8] text-[#1B1B19] uppercase tracking-[1px] text-[0.6rem] sm:text-xs font-extrabold px-3 py-1">
+                            {book.status}
+                          </span>
+                        )}
+                      </div>
+                      {book.author && (
+                        <p className="readingAuthor text-[#555] text-sm sm:text-base md:text-[1.1em] italic mt-0.5">
+                          {book.author}
+                        </p>
+                      )}
+                      {book.note && (
+                        <p className="readingNote text-[#666] text-xs sm:text-sm md:text-[1em] tracking-[0.3px] mt-1">
+                          {book.note}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : home.techSection.skillGroups ? (
+              <div className="skillGroups h-full flex flex-col justify-center w-full gap-5 sm:gap-6">
+                {home.techSection.skillGroups.map((group, i) => (
+                  <div
+                    key={i}
+                    className="skillGroup flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-5 border-b border-[#888]/40 pb-4 last:border-b-0"
+                  >
+                    <p className="skillGroupLabel text-[#1B1B19] font-extrabold uppercase tracking-[2px] text-xs sm:text-sm md:text-[1em] w-full sm:w-40 md:w-50 shrink-0">
+                      {group.category}
+                    </p>
+                    <div className="skillGroupItems flex flex-row flex-wrap gap-2 sm:gap-3">
+                      {group.items.map((item, j) => (
+                        <span
+                          key={j}
+                          className="skillTag border-2 border-[#222] rounded-full bg-[#E2D9C8] text-[#1B1B19] font-semibold text-xs sm:text-sm md:text-[1em] tracking-[0.5px] px-3 sm:px-4 py-1 sm:py-1.5"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text1row1col1techTracks h-full flex flex-row flex-wrap items-left text-[#1B1B19] leading-[40px] sm:leading-[60px] md:leading-[75px] font-extrabold text-left w-full gap-4 sm:gap-6 md:gap-10">
+                {home.techSection.skills.map((skill, i) =>
+                  skill.type === "icon" ? (
+                    <img
+                      key={i}
+                      width={40}
+                      height={40}
+                      className="sm:w-[50px] sm:h-[50px] md:w-[60px] md:h-[60px]"
+                      src={skill.src}
+                      alt={skill.alt}
+                    />
+                  ) : (
+                    <p key={i} className="font-extrabold text-sm sm:text-base md:text-lg lg:text-xl xl:text-[2em]">
+                      {skill.label}
+                    </p>
+                  )
+                )}
+              </div>
+            )}
           </div>
-          <div className="row2row2 flex flex-col lg:flex-row w-full gap-5 lg:gap-10 mt-10">
-            <div className="relative websiteTextContainer text-3xl sm:text-6xl md:text-8xl lg:text-[15em] xl:text-[25em] w-full lg:w-[70%] flex justify-center items-center h-[100px] sm:h-[350px] md:h-[450px] bg-[#1B1B19] text-center opacity-90 select-none rounded-[10px] sm:rounded-[15px]">
-              <p className="text-[#E2D9C8] tracking-wide font-extrabold">{home.techSection.subheading}</p>
+          {home.techSection.explore ? (
+            <div className="exploreSection w-full flex flex-col gap-6 mt-12">
+              <div className="exploreGrid grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+                {home.techSection.explore.map((card, i) => (
+                  <a
+                    key={i}
+                    href={`/${person}/${card.href}`}
+                    className="exploreCard group relative flex flex-col justify-between border-2 border-[#222] rounded-[18px] sm:rounded-[22px] bg-[#E2D9C8] h-45 sm:h-60 md:h-70 p-6 sm:p-8 cursor-pointer overflow-hidden transition-all duration-300 hover:bg-[#1B1B19] hover:scale-[1.015]"
+                  >
+                    <span className="exploreCaption text-[#555] group-hover:text-[#bdb39c] uppercase tracking-[3px] text-xs sm:text-sm font-extrabold transition-colors duration-300">
+                      {card.caption}
+                    </span>
+                    <div className="flex items-end justify-between">
+                      <span className="exploreLabel fontNav text-[#1B1B19] group-hover:text-[#E2D9C8] text-4xl sm:text-6xl md:text-[5em] leading-none tracking-[1px] transition-colors duration-300">
+                        {card.label}
+                      </span>
+                      <ion-icon
+                        name="arrow-forward-outline"
+                        class="text-[#1B1B19] group-hover:text-[#E2D9C8] text-3xl sm:text-5xl transition-all duration-300 group-hover:translate-x-2"
+                      />
+                    </div>
+                  </a>
+                ))}
+              </div>
             </div>
-            <div className="descriptionRow2 w-full lg:w-[30%] h-[250px] sm:h-[350px] md:h-[450px] overflow-y-auto">
-              <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-[1.4em] opacity-90 text-[#333]">
-                {home.techSection.description}
-              </p>
+          ) : (
+            <div className="row2row2 flex flex-col lg:flex-row w-full gap-5 lg:gap-10 mt-10">
+              <div className="relative websiteTextContainer text-3xl sm:text-6xl md:text-8xl lg:text-[15em] xl:text-[25em] w-full lg:w-[70%] flex justify-center items-center h-[100px] sm:h-[350px] md:h-[450px] bg-[#1B1B19] text-center opacity-90 select-none rounded-[10px] sm:rounded-[15px]">
+                <p className="text-[#E2D9C8] tracking-wide font-extrabold">{home.techSection.subheading}</p>
+              </div>
+              <div className="descriptionRow2 w-full lg:w-[30%] h-[250px] sm:h-[350px] md:h-[450px] overflow-y-auto">
+                <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-[1.4em] opacity-90 text-[#333]">
+                  {home.techSection.description}
+                </p>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
 

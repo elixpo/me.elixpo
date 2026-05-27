@@ -52,23 +52,15 @@ export default function Masthead({ hero, person }) {
 
             {hero.ctas?.length > 0 && (
               <div className="mastheadCtas flex flex-wrap gap-4 sm:gap-5">
-                {hero.ctas.map((cta, i) => {
-                  const primary = i === 0;
-                  return (
-                    <a
-                      key={i}
-                      href={`/${person}/${cta.href}`}
-                      className={
-                        "ctaButton rounded-full px-7 sm:px-9 py-2.5 sm:py-3 text-base sm:text-lg md:text-[1.3em] font-extrabold tracking-[1px] cursor-pointer transition-all duration-300 hover:scale-105 " +
-                        (primary
-                          ? "bg-[#1B1B19] text-[#E2D9C8] border-2 border-[#1B1B19] hover:bg-[#000]"
-                          : "border-2 border-[#222] text-[#1B1B19] hover:bg-[#1B1B19] hover:text-[#E2D9C8]")
-                      }
-                    >
-                      {cta.label}
-                    </a>
-                  );
-                })}
+                {hero.ctas.map((cta, i) => (
+                  <a
+                    key={i}
+                    href={`/${person}/${cta.href}`}
+                    className="ctaButton fontNav border-2 border-[#222] rounded-full px-7 sm:px-9 py-2.5 sm:py-3 text-base sm:text-lg md:text-[1.3em] tracking-[1px] text-[#1B1B19] flex justify-center items-center cursor-pointer transition-all duration-300 hover:bg-[#1B1B19] hover:text-[#E2D9C8] hover:scale-105"
+                  >
+                    {cta.label}
+                  </a>
+                ))}
               </div>
             )}
           </div>

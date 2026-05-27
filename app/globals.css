@@ -65,6 +65,12 @@ body {
   font-weight: 400;
   font-style: normal;
 }
+
+/* Reusable navbar-grid font (CTAs, accents) */
+.fontNav {
+  font-family: "Bitcount Grid Double", system-ui;
+  font-optical-sizing: auto;
+}
 .location {
   font-family: "Bitcount Grid Double", system-ui;
   font-optical-sizing: auto;
