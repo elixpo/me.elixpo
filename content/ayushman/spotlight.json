@@ -24,9 +24,9 @@
     "image": "/assets/ayushman/spotlight/kolkata-hacktoberfest.webp"
   },
   {
-    "title": "Elixpo Search",
+    "title": "LixSearch",
     "date": "2025-04-06",
-    "description": "A LangChain-based semantic search agent built and deployed on Azure for Pollinations.ai — searches the web dynamically, indexes results, and routes requests through an LLM for natural-language understanding.",
+    "description": "A LangChain-based semantic search agent built and deployed on Digital Ocean for Pollinations.ai — searches the web dynamically, indexes results, and routes requests through an LLM for natural-language understanding.",
     "image": "/assets/ayushman/spotlight/elixpo-search.webp"
   }
 ]
