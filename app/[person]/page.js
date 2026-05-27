@@ -1,6 +1,7 @@
 import { getPersonContent } from "@/lib/content";
 import ContactBanner from "@/components/ContactBanner";
 import { SpotlightScroller } from "@/components/Animations";
+import Masthead from "@/components/Masthead";
 
 export default async function HomePage({ params }) {
   const { person } = await params;
@@ -10,6 +11,9 @@ export default async function HomePage({ params }) {
 
   return (
     <>
+      {/* Identity-first masthead (members with a hero block) */}
+      {home.hero && <Masthead hero={home.hero} person={person} />}
+
       {/* Spotlight Section */}
       <SpotlightScroller>
         {spotlight.map((news, index) => {
@@ -40,7 +44,8 @@ export default async function HomePage({ params }) {
         })}
       </SpotlightScroller>
 
-      {/* Intro Section */}
+      {/* Intro Section — only for members without a masthead hero block */}
+      {!home.hero && (
       <section className="introSection relative mt-[10px] w-full flex flex-col border-b-2 border-[#111] p-2 sm:p-5">
         <div className="nameContainer text-base sm:text-6xl md:text-8xl lg:text-[12em] xl:text-[20em] w-full py-2 sm:py-0 sm:h-[250px] md:h-[300px] lg:h-[350px] flex justify-center items-center bg-[#1B1B19] text-center opacity-90 select-none rounded-[10px] sm:rounded-[15px] tracking-[2px] sm:tracking-[3px] md:tracking-[5px]">
           <p className="text-[#E2D9C8]">{home.intro.heroName}</p>
@@ -82,6 +87,7 @@ export default async function HomePage({ params }) {
           </div>
         </div>
       </section>
+      )}
 
       {/* Website Section */}
       <section id="websiteSection" className="websiteSection relative mt-[10px] w-full flex flex-col border-b-2 border-[#111] p-2 sm:p-4 md:p-5">
