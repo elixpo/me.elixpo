@@ -280,7 +280,7 @@ export default async function HomePage({ params }) {
                   <a
                     key={i}
                     href={`/${person}/${card.href}`}
-                    className="exploreCard group relative flex flex-col justify-between border-2 border-[#222] rounded-[18px] sm:rounded-[22px] bg-[#E2D9C8] h-45 sm:h-60 md:h-70 p-6 sm:p-8 cursor-pointer overflow-hidden transition-all duration-300 hover:bg-[#1B1B19] hover:scale-[1.015]"
+                    className="exploreCard group relative flex flex-col justify-between gap-6 sm:gap-8 border-2 border-[#222] rounded-[16px] sm:rounded-[20px] bg-[#E2D9C8] h-32 sm:h-36 md:h-40 p-5 sm:p-6 cursor-pointer overflow-hidden transition-all duration-300 hover:bg-[#1B1B19] hover:scale-[1.015]"
                   >
                     <span className="exploreCaption text-[#555] group-hover:text-[#bdb39c] uppercase tracking-[3px] text-xs sm:text-sm font-extrabold transition-colors duration-300">
                       {card.caption}
