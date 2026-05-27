@@ -285,13 +285,13 @@ export default async function HomePage({ params }) {
                     <span className="exploreCaption text-[#555] group-hover:text-[#bdb39c] uppercase tracking-[3px] text-xs sm:text-sm font-extrabold transition-colors duration-300">
                       {card.caption}
                     </span>
-                    <div className="flex items-end justify-between">
-                      <span className="exploreLabel fontNav text-[#1B1B19] group-hover:text-[#E2D9C8] text-4xl sm:text-6xl md:text-[5em] leading-none tracking-[1px] transition-colors duration-300">
+                    <div className="flex items-end justify-between gap-2">
+                      <span className="exploreLabel fontNav text-[#1B1B19] group-hover:text-[#E2D9C8] text-4xl sm:text-5xl md:text-[3.4em] leading-none tracking-[1px] transition-colors duration-300 truncate min-w-0">
                         {card.label}
                       </span>
                       <ion-icon
                         name="arrow-forward-outline"
-                        class="text-[#1B1B19] group-hover:text-[#E2D9C8] text-3xl sm:text-5xl transition-all duration-300 group-hover:translate-x-2"
+                        class="shrink-0 text-[#1B1B19] group-hover:text-[#E2D9C8] text-3xl sm:text-5xl transition-all duration-300 group-hover:translate-x-2"
                       />
                     </div>
                   </a>
