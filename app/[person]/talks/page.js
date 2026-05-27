@@ -23,11 +23,84 @@ export async function generateMetadata({ params }) {
   };
 }
 
+function TalkCard({ talk }) {
+  const upcoming = talk.status === "upcoming";
+  const Title = (
+    <h3 className="talkTitle font-extrabold text-[#1B1B19] text-base sm:text-lg md:text-xl leading-snug tracking-[0.5px]">
+      <span className={talk.link ? "underline decoration-[#888] decoration-1 underline-offset-4 group-hover:decoration-[#B63B12]" : ""}>
+        {talk.title}
+      </span>
+      {talk.venue && (
+        <span className="talkVenue font-semibold text-[#B63B12] text-sm sm:text-base"> | {talk.venue}</span>
+      )}
+    </h3>
+  );
+
+  const inner = (
+    <>
+      <span
+        className={
+          "talkPill fontNav self-start uppercase tracking-[1px] text-[0.6rem] sm:text-xs px-3 py-1 rounded-full " +
+          (upcoming ? "bg-[#B63B12] text-[#ffe]" : "bg-[#1B1B19] text-[#E2D9C8]")
+        }
+      >
+        {upcoming ? "Upcoming" : "Past"}
+      </span>
+      {Title}
+      <div className="talkMeta flex flex-col gap-1 mt-1">
+        <span className="flex items-center gap-2 text-[#444] text-sm sm:text-base">
+          <ion-icon name="calendar-outline" />
+          {talk.date}
+        </span>
+        {talk.location && (
+          <span className="flex items-center gap-2 text-[#444] text-sm sm:text-base">
+            <ion-icon name="location-outline" />
+            {talk.location}
+          </span>
+        )}
+      </div>
+    </>
+  );
+
+  const cardClass =
+    "talkCard group flex flex-col gap-3 border-2 rounded-[16px] p-5 sm:p-6 transition-all duration-300 " +
+    (upcoming
+      ? "border-[#B63B12]/40 bg-[#B63B12]/[0.06] hover:bg-[#B63B12]/[0.12]"
+      : "border-[#222]/20 bg-[#E2D9C8]/40 hover:bg-[#E2D9C8]/70");
+
+  return talk.link ? (
+    <a href={talk.link} target="_blank" rel="noopener noreferrer" className={cardClass + " cursor-pointer hover:scale-[1.01]"}>
+      {inner}
+    </a>
+  ) : (
+    <div className={cardClass}>{inner}</div>
+  );
+}
+
+function TalkGroup({ label, accent, talks }) {
+  if (talks.length === 0) return null;
+  return (
+    <section className="talkGroup mt-8 sm:mt-12 px-3 sm:px-6 md:px-10">
+      <div className="flex items-center gap-3 mb-5 sm:mb-6">
+        <span className={"h-3 w-3 rounded-full " + (accent ? "bg-[#B63B12]" : "bg-[#888]")} />
+        <h2 className="font-[Canopee,serif] text-[#1B1B19] text-2xl sm:text-3xl md:text-[2.4em] tracking-[1px]">
+          {label}
+        </h2>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+        {talks.map((talk, i) => (
+          <TalkCard key={i} talk={talk} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export default async function TalksPage({ params }) {
   const { person } = await params;
   const talks = safeGet(person, "talks");
 
-  if (!talks) {
+  if (!talks || !talks.sessions?.length) {
     return (
       <>
         <ComingSoon title="Talks Coming Soon" />
@@ -36,63 +109,29 @@ export default async function TalksPage({ params }) {
     );
   }
 
+  const upcoming = talks.sessions.filter((s) => s.status === "upcoming");
+  const past = talks.sessions.filter((s) => s.status !== "upcoming");
+
   return (
     <>
       {/* Header */}
-      <section className="introSection mt-5 px-3 sm:px-6 md:px-10 flex flex-col items-center w-full">
-        <div className="headingText text-2xl sm:text-6xl md:text-[10em] lg:text-[13em] w-full h-[70px] sm:h-[250px] md:h-[350px] flex justify-center items-center bg-[#1B1B19] text-center opacity-90 select-none rounded-[10px] sm:rounded-[15px] tracking-[3px] sm:tracking-[5px]">
-          <p className="text-[#E2D9C8] transform scale-y-[1.6]">{talks.heading}</p>
-        </div>
-        <div className="descriptionText text-lg sm:text-2xl md:text-[3em] lg:text-[5em] mt-3 sm:mt-5 w-full text-left leading-snug sm:leading-[50px] md:leading-[80px]">
-          <p className="text-[#1B1B19]">{talks.description}</p>
+      <section className="talksHeader mt-8 sm:mt-12 px-3 sm:px-6 md:px-10 flex flex-col w-full">
+        <h1 className="font-[Canopee,serif] text-[#1B1B19] text-4xl sm:text-6xl md:text-[5em] leading-none tracking-[1px]">
+          {talks.heading}
+        </h1>
+        <p className="mt-4 sm:mt-5 text-[#444] italic text-base sm:text-xl md:text-[1.6em] max-w-[800px] leading-snug">
+          {talks.description}
+        </p>
+        <div className="mt-5 sm:mt-6 flex items-center gap-3">
+          <span className="fontNav text-[#888] text-sm sm:text-base tracking-[1px]">
+            {talks.sessions.length} sessions
+          </span>
+          <span className="flex-1 h-0.5 bg-[#888]/30" />
         </div>
       </section>
 
-      {/* Talks List */}
-      {talks.sessions?.length > 0 ? (
-        <section className="talks mt-5 p-3 sm:p-6 md:p-10 flex flex-col items-left w-full gap-3 sm:gap-5 overflow-hidden">
-          {talks.sessions.map((talk, index) => {
-            const Row = (
-              <div
-                className={
-                  "relative min-h-[50px] sm:min-h-[60px] w-full flex flex-col sm:flex-row items-start sm:items-center justify-between border-t-2 border-b-2 border-[#111] px-3 sm:px-6 py-2 sm:py-3 gap-2 sm:gap-0 transition-colors duration-300" +
-                  (talk.link ? " hover:bg-[#1B1B19] hover:text-[#E2D9C8] cursor-pointer group" : "")
-                }
-              >
-                <div className="flex-1 flex flex-col overflow-hidden">
-                  <p className="talkTitle font-extrabold text-sm sm:text-lg md:text-xl lg:text-2xl text-left tracking-[1px] sm:tracking-[2px]">
-                    {talk.title}
-                  </p>
-                  {talk.venue && (
-                    <p className="talkVenue text-[#555] group-hover:text-[#bdb39c] text-xs sm:text-sm md:text-base tracking-[0.5px] mt-1 transition-colors duration-300">
-                      {talk.venue}
-                    </p>
-                  )}
-                </div>
-                <div className="flex flex-row gap-2 sm:gap-3 items-center flex-shrink-0">
-                  <p className="talkDate text-[#222] group-hover:text-[#E2D9C8] text-sm sm:text-lg md:text-xl font-bold whitespace-nowrap transition-colors duration-300">
-                    {talk.date}
-                  </p>
-                  {talk.isNew && (
-                    <span className="newTag flex h-[24px] sm:h-[28px] px-2 text-xs sm:text-sm md:text-base text-[#ffc] bg-[#B63B12] items-center justify-center rounded-[5px]">
-                      NEW
-                    </span>
-                  )}
-                </div>
-              </div>
-            );
-            return talk.link ? (
-              <a key={index} href={talk.link} target="_blank" rel="noopener noreferrer">
-                {Row}
-              </a>
-            ) : (
-              <div key={index}>{Row}</div>
-            );
-          })}
-        </section>
-      ) : (
-        <ComingSoon title="Talks Coming Soon" />
-      )}
+      <TalkGroup label="Upcoming" accent talks={upcoming} />
+      <TalkGroup label="Past" talks={past} />
 
       {/* Contact Banner */}
       <ContactBanner person={person} />
