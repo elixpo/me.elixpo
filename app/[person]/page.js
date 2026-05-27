@@ -24,8 +24,7 @@ export default async function HomePage({ params }) {
               {index === midIndex && (
                 <div id="spotlightCenter" className="featuredTileSpecial relative h-[280px] sm:h-[350px] w-[280px] sm:w-[450px] flex-shrink-0 flex flex-col items-center mt-[10px] border-r-2 border-l-2 border-[#888] px-3 sm:px-5">
                   <p className="featuredTileSpecialText text-2xl sm:text-[4em] font-extrabold tracking-wide relative">SPOTLIGHT!</p>
-                  <p className="featuredTileSpecialDesc text-sm sm:text-[1.8em] font-thin relative text-center">Welcome to the latest catches -- in my career and let&apos;s find the craziest!!</p>
-                  <p className="featuredTileSpecialTip relative text-xs sm:text-[1.5em] font-extrabold text-center top-[30px] sm:top-[70px]">&lt;&lt; Watch! More to Come &gt;&gt;</p>
+                  <p className="featuredTileSpecialDesc text-sm sm:text-[1.8em] font-thin relative text-center">These are the  latest catches in my career</p>
                 </div>
               )}
               <div className="featuredTile relative h-[280px] sm:h-[350px] w-[250px] sm:w-[400px] flex-shrink-0 flex flex-col mt-[10px] px-[10px] sm:px-[20px] overflow-hidden">
@@ -276,7 +275,7 @@ export default async function HomePage({ params }) {
           </div>
           {home.techSection.explore ? (
             <div className="exploreSection w-full flex flex-col gap-6 mt-12">
-              <div className="exploreGrid grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+              <div className="exploreGrid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
                 {home.techSection.explore.map((card, i) => (
                   <a
                     key={i}
