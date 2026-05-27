@@ -4,7 +4,7 @@
     "name": "AYUSHMAN",
     "headline": "Open-Source Maintainer & Platform Engineer",
     "subhead": "GitHub Maintainer Advisory for Pollinations.ai · Product Engineer @ Myceli AI",
-    "intro": "I build the automation, release engineering, and developer tooling that keep large open-source projects running — contributor pipelines, CI/CD, and deployment infrastructure.",
+    "intro": "I build the automation, release engineering, and developer tooling that keep large open-source projects running, contributor pipelines, CI/CD, and deployment infrastructure.",
     "credentials": [
       { "label": "GitHub Maintainer Advisory", "org": "Pollinations.ai" },
       { "label": "Product Engineer", "org": "Myceli AI" }
@@ -53,7 +53,8 @@
     ],
     "explore": [
       { "label": "Talks", "caption": "Speaking & sessions", "href": "talks" },
-      { "label": "Publications", "caption": "Research & writing", "href": "publications" }
+      { "label": "Writing", "caption": "Notes & blog posts", "href": "blogs" },
+      { "label": "Papers", "caption": "Research & publications", "href": "publications" }
     ],
     "images": {
       "wand": "/assets/ayushman/techTracks/wand-1.webp",

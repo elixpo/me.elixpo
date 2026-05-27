@@ -10,6 +10,6 @@
     { "platform": "instagram", "url": "https://instagram.com/elixpo_", "icon": "logo-instagram" },
     { "platform": "youtube", "url": "https://youtube.com/@elixpo", "icon": "logo-youtube" }
   ],
-  "menuItems": ["Home", "About", "Projects", "Talks", "Publications"]
+  "menuItems": ["Home", "About", "Projects", "Talks", "Publications", "Blogs"]
 }
   

@@ -93,38 +93,35 @@ body {
 
 /* ===== MENU OVERLAY ===== */
 .menuItem {
-  text-align: center;
-  letter-spacing: -0.05em;
   text-transform: uppercase;
-  margin-top: 0;
-  margin-bottom: 0;
   font-family: Canopee, sans-serif;
-  font-size: 2rem;
   font-weight: 400;
+  line-height: 1.1;
+}
+.menuWord {
+  font-size: 1.9rem;
+  letter-spacing: -0.04em;
 }
 @media (min-width: 640px) {
-  .menuItem {
-    font-size: 2.5rem;
+  .menuWord {
+    font-size: 2.6rem;
   }
 }
 @media (min-width: 768px) {
-  .menuItem {
-    font-size: 3rem;
+  .menuWord {
+    font-size: 3.1rem;
   }
 }
 @media (min-width: 1024px) {
-  .menuItem {
-    font-size: 4rem;
+  .menuWord {
+    font-size: 3.6rem;
   }
 }
-@media (min-width: 1280px) {
-  .menuItem {
-    font-size: 5rem;
-  }
+.menuItem.selected .menuWord {
+  color: #b63b12;
 }
-.menuItem.selected {
-  color: #96b59f;
-  text-decoration: underline;
+.menuItem.selected .menuIndex {
+  opacity: 1;
 }
 
 /* ===== CANVAS (curtain effect) ===== */

@@ -24,8 +24,7 @@ export default async function HomePage({ params }) {
               {index === midIndex && (
                 <div id="spotlightCenter" className="featuredTileSpecial relative h-[280px] sm:h-[350px] w-[280px] sm:w-[450px] flex-shrink-0 flex flex-col items-center mt-[10px] border-r-2 border-l-2 border-[#888] px-3 sm:px-5">
                   <p className="featuredTileSpecialText text-2xl sm:text-[4em] font-extrabold tracking-wide relative">SPOTLIGHT!</p>
-                  <p className="featuredTileSpecialDesc text-sm sm:text-[1.8em] font-thin relative text-center">Welcome to the latest catches -- in my career and let&apos;s find the craziest!!</p>
-                  <p className="featuredTileSpecialTip relative text-xs sm:text-[1.5em] font-extrabold text-center top-[30px] sm:top-[70px]">&lt;&lt; Watch! More to Come &gt;&gt;</p>
+                  <p className="featuredTileSpecialDesc text-sm sm:text-[1.8em] font-thin relative text-center">These are the  latest catches in my career</p>
                 </div>
               )}
               <div className="featuredTile relative h-[280px] sm:h-[350px] w-[250px] sm:w-[400px] flex-shrink-0 flex flex-col mt-[10px] px-[10px] sm:px-[20px] overflow-hidden">
@@ -276,23 +275,23 @@ export default async function HomePage({ params }) {
           </div>
           {home.techSection.explore ? (
             <div className="exploreSection w-full flex flex-col gap-6 mt-12">
-              <div className="exploreGrid grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+              <div className="exploreGrid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
                 {home.techSection.explore.map((card, i) => (
                   <a
                     key={i}
                     href={`/${person}/${card.href}`}
-                    className="exploreCard group relative flex flex-col justify-between border-2 border-[#222] rounded-[18px] sm:rounded-[22px] bg-[#E2D9C8] h-45 sm:h-60 md:h-70 p-6 sm:p-8 cursor-pointer overflow-hidden transition-all duration-300 hover:bg-[#1B1B19] hover:scale-[1.015]"
+                    className="exploreCard group relative flex flex-col justify-between gap-6 sm:gap-8 border-2 border-[#222] rounded-[16px] sm:rounded-[20px] bg-[#E2D9C8] h-32 sm:h-36 md:h-40 p-5 sm:p-6 cursor-pointer overflow-hidden transition-all duration-300 hover:bg-[#1B1B19] hover:scale-[1.015]"
                   >
                     <span className="exploreCaption text-[#555] group-hover:text-[#bdb39c] uppercase tracking-[3px] text-xs sm:text-sm font-extrabold transition-colors duration-300">
                       {card.caption}
                     </span>
-                    <div className="flex items-end justify-between">
-                      <span className="exploreLabel fontNav text-[#1B1B19] group-hover:text-[#E2D9C8] text-4xl sm:text-6xl md:text-[5em] leading-none tracking-[1px] transition-colors duration-300">
+                    <div className="flex items-end justify-between gap-2">
+                      <span className="exploreLabel fontNav text-[#1B1B19] group-hover:text-[#E2D9C8] text-4xl sm:text-5xl md:text-[3.4em] leading-none tracking-[1px] transition-colors duration-300 truncate min-w-0">
                         {card.label}
                       </span>
                       <ion-icon
                         name="arrow-forward-outline"
-                        class="text-[#1B1B19] group-hover:text-[#E2D9C8] text-3xl sm:text-5xl transition-all duration-300 group-hover:translate-x-2"
+                        class="shrink-0 text-[#1B1B19] group-hover:text-[#E2D9C8] text-3xl sm:text-5xl transition-all duration-300 group-hover:translate-x-2"
                       />
                     </div>
                   </a>

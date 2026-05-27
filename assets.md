@@ -29,6 +29,18 @@ Each prompt file (`prompts/<name>.md`) declares its own `output` path, `width`, 
 | OWASP JIS University | [owasp-jisu.md](./prompts/owasp-jisu.md) | `public/assets/ayushman/spotlight/owasp-jisu.webp` | `ayushman` spotlight |
 | Kolkata Hacktoberfest | [kolkata-hacktoberfest.md](./prompts/kolkata-hacktoberfest.md) | `public/assets/ayushman/spotlight/kolkata-hacktoberfest.webp` | `ayushman` spotlight |
 | Elixpo Search | [elixpo-search.md](./prompts/elixpo-search.md) | `public/assets/ayushman/spotlight/elixpo-search.webp` | `ayushman` spotlight |
+| Site favicon (panda mascot) | [favicon.md](./prompts/favicon.md) | `app/icon.png` | site-wide favicon |
+
+## Favicon
+
+The site icon is the Elixpo panda mascot. `app/icon.png` (512²) is generated from
+[`prompts/favicon.md`](./prompts/favicon.md) and serves as the modern `<link rel="icon">`.
+The legacy multi-size `app/favicon.ico` is derived from it with ImageMagick:
+
+```bash
+npm run gen:asset favicon   # regenerate app/icon.png
+convert app/icon.png -background none -define icon:auto-resize=64,48,32,16 app/favicon.ico
+```
 
 ## Adding a new asset
 
