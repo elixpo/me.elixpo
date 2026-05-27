@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Amarante&family=Bitcount+Grid+Double:wght@100..900&family=Changa+One:ital@0;1&family=Pathway+Gothic+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Pathway+Gothic+One&display=swap");
 
 @import "tailwindcss";
 @source not "../ayushman";
@@ -214,11 +214,11 @@ body {
   font-family: "Pathway Gothic One", sans-serif;
 }
 .featureName {
-  font-family: "Amarante";
+  font-family: "Canopee";
   font-optical-sizing: auto;
 }
 .newTag {
-  font-family: monospace;
+  font-family: "Pathway Gothic One", sans-serif;
   font-weight: 700;
 }
 .featuredTileSpecialText {

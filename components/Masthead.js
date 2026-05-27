@@ -37,7 +37,7 @@ export default function Masthead({ hero, person }) {
                 {hero.credentials.map((c, i) => (
                   <div
                     key={i}
-                    className="credentialCard border-2 border-[#222] rounded-[12px] bg-[#E2D9C8] px-5 py-3 flex flex-col min-w-[210px]"
+                    className="credentialCard border-2 border-[#222] rounded-[12px] bg-[#E2D9C8] px-5 py-3 flex flex-col min-w-[210px] shadow-[5px_5px_0_0_#222] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[6px_7px_0_0_#222]"
                   >
                     <span className="text-[#1B1B19] font-extrabold text-sm sm:text-base md:text-[1.2em] leading-tight">
                       {c.label}

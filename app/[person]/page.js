@@ -2,6 +2,7 @@ import { getPersonContent } from "@/lib/content";
 import ContactBanner from "@/components/ContactBanner";
 import { SpotlightScroller } from "@/components/Animations";
 import Masthead from "@/components/Masthead";
+import DragScrollContainer from "@/components/DragScrollContainer";
 
 export default async function HomePage({ params }) {
   const { person } = await params;
@@ -155,7 +156,7 @@ export default async function HomePage({ params }) {
       </section>
 
       {/* Recommendations Section */}
-      <section id="recommendationSection" className={`recommendationSection ${recommendations.length > 0 ? 'block' : 'hidden'} relative h-auto min-h-[300px] sm:min-h-[400px] md:min-h-[450px] mb-[20px] px-3 sm:px-6 md:px-[40px] box-border py-[20px] sm:py-[40px] gap-[15px] sm:gap-[20px] overflow-x-auto overflow-y-hidden flex-nowrap flex flex-row mt-10 sm:mt-20`}>
+      <DragScrollContainer className={`recommendationSection ${recommendations.length > 0 ? 'flex' : 'hidden'} relative h-auto min-h-[300px] sm:min-h-[400px] md:min-h-[450px] mb-[20px] px-3 sm:px-6 md:px-[40px] box-border py-[20px] sm:py-[40px] gap-[15px] sm:gap-[20px] overflow-x-auto overflow-y-hidden flex-nowrap flex-row mt-10 sm:mt-20`}>
         {recommendations.map((rec, index) => (
           <div
             key={index}
@@ -204,7 +205,7 @@ export default async function HomePage({ params }) {
         <div className="row2 flex flex-col w-full mt-10">
           <div className="row2row1 flex flex-col lg:flex-row w-full gap-5 lg:gap-10">
             <div
-              className="row1col2 relative w-full lg:w-[850px] h-[300px] sm:h-[350px] md:h-[400px] border-2 border-[#222] bg-cover bg-center mix-blend-multiply rounded-[25px]"
+              className="row1col2 relative w-full lg:w-[850px] h-[300px] sm:h-[350px] lg:h-auto lg:self-stretch border-2 border-[#222] bg-cover bg-center mix-blend-multiply rounded-[25px]"
               style={{ backgroundImage: `url(${home.techSection.images.banner})` }}
             />
             {home.techSection.reading ? (
