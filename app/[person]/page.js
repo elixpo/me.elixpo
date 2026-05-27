@@ -120,7 +120,7 @@ export default async function HomePage({ params }) {
                 </h3>
               </div>
               <div className="h-0.5 bg-[#222] w-full" />
-              <p className="text-[#333] text-sm sm:text-base md:text-[1.15em] leading-relaxed tracking-[0.3px]">
+              <p className="behindBody text-[#333] text-sm sm:text-base md:text-[1.15em] leading-relaxed tracking-[0.3px] h-50 sm:h-60 overflow-y-auto pr-2">
                 {block.body}
               </p>
             </div>
@@ -128,7 +128,7 @@ export default async function HomePage({ params }) {
         </div>
 
         {/* CTA */}
-        <div className="behindCta flex justify-center sm:justify-start mt-8 sm:mt-12">
+        <div className="behindCta flex justify-center mt-8 sm:mt-12">
           <a
             href={`/${person}/projects`}
             id="projectsRedirect"
