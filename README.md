@@ -91,7 +91,7 @@ No CMS. No database. Just clean, static content that deploys to the edge.
 </a>
 &nbsp;&nbsp;&nbsp;
 <a href="https://github.com/CSE-Anwesha">
-  <img src="https://github.com/CSE-Anwesha.png" width="80" style="border-radius:50%" alt="Anwesha" />
+  <img src="https://github.com/anwe-ch.png" width="80" style="border-radius:50%" alt="Anwesha" />
 </a>
 &nbsp;&nbsp;&nbsp;
 <a href="https://github.com/ez-vivek">
