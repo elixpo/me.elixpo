@@ -25,7 +25,16 @@ export async function generateMetadata({ params }) {
 
 export default async function ProjectsPage({ params }) {
   const { person } = await params;
-  const projectsData = getPersonContent(person, "projects");
+  const projectsData = safeGet(person, "projects");
+
+  if (!projectsData || !projectsData.projects?.length) {
+    return (
+      <>
+        <ComingSoon title="Projects Coming Soon" />
+        <ContactBanner person={person} />
+      </>
+    );
+  }
 
   return (
     <>
