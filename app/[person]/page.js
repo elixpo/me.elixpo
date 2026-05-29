@@ -4,7 +4,6 @@ import { SpotlightScroller } from "@/components/Animations";
 import Masthead from "@/components/Masthead";
 import DragScrollContainer from "@/components/DragScrollContainer";
 import ComingSoon from "@/components/ComingSoon";
-import ContactBanner from "@/components/ContactBanner";
 
 function safeGet(person, file) {
   try {
