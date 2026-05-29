@@ -2,6 +2,14 @@ import { getPersonContent } from "@/lib/content";
 import ContactBanner from "@/components/ContactBanner";
 import ComingSoon from "@/components/ComingSoon";
 
+function safeGet(person, file) {
+  try {
+    return getPersonContent(person, file);
+  } catch {
+    return null;
+  }
+}
+
 export async function generateMetadata({ params }) {
   const { person } = await params;
   const profile = getPersonContent(person, "profile");
