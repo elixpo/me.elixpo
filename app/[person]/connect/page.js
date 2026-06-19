@@ -14,7 +14,7 @@ export async function generateMetadata({ params }) {
   const { person } = await params;
   const profile = getPersonContent(person, "profile");
   const title = `${profile.siteName} - Connect`;
-  const description = `Connect with ${profile.siteName} — ${profile.siteDescription}`;
+  const description = `Connect with ${profile.siteName} - ${profile.siteDescription}`;
   return {
     title,
     description,
@@ -71,7 +71,7 @@ export default async function ConnectPage({ params }) {
         ))}
       </section>
 
-      {/* Contact Image — hidden on small screens */}
+      {/* Contact Image - hidden on small screens */}
       {connectData.contactImage && (
         <div className="hidden sm:flex justify-center mb-10">
           <div

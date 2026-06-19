@@ -14,7 +14,7 @@ export async function generateMetadata({ params }) {
   const { person } = await params;
   const profile = getPersonContent(person, "profile");
   const title = `${profile.siteName} - Publications`;
-  const description = `Publications by ${profile.siteName} — ${profile.siteDescription}`;
+  const description = `Publications by ${profile.siteName} - ${profile.siteDescription}`;
   return {
     title,
     description,
@@ -48,7 +48,7 @@ export default async function PublicationsPage({ params }) {
         </div>
       </section>
 
-      {/* Pre-publication images — hidden on mobile */}
+      {/* Pre-publication images - hidden on mobile */}
       {pubs.images?.length > 0 && (
         <section className="prePublication relative mt-5 p-3 sm:p-6 md:p-10 hidden sm:flex flex-row w-full justify-center gap-5">
           {pubs.images.map((img, i) => (

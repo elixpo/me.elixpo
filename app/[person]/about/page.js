@@ -15,7 +15,7 @@ export async function generateMetadata({ params }) {
   const { person } = await params;
   const profile = getPersonContent(person, "profile");
   const title = `${profile.siteName} - About`;
-  const description = `About ${profile.siteName} — ${profile.siteDescription}`;
+  const description = `About ${profile.siteName} - ${profile.siteDescription}`;
   return {
     title,
     description,
