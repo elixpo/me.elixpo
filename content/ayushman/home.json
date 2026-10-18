@@ -3,11 +3,11 @@
     "focusTags": ["DevOps", "Developer Experience", "AI Memory Systems"],
     "name": "AYUSHMAN",
     "headline": "DevOps, Platform & Developer Experience",
-    "subhead": "Open-Source Maintainer at Pollinations.ai · Developer Relations at Myceli AI",
+    "subhead": "Open-Source Maintainer at Pollinations.ai · Product Engineer at Myceli AI",
     "intro": "I build the CI/CD, release, observability, contributor automation, and developer tooling that help open-source and AI systems remain understandable and operable.",
     "credentials": [
       { "label": "GitHub Maintainer Advisory", "org": "Pollinations.ai" },
-      { "label": "Developer Relations", "org": "Myceli AI" }
+      { "label": "Product Engineering & DevRel", "org": "Myceli AI" }
     ],
     "ctas": [
       { "label": "View Work", "href": "projects" },
@@ -16,6 +16,29 @@
     ],
     "portrait": "/assets/ayushman/punchlineSection/vr-pic1.webp"
   },
+  "directions": [
+    {
+      "index": "01",
+      "label": "Primary practice",
+      "title": "DevOps, platform and Developer Experience",
+      "description": "CI/CD, release engineering, service health, contributor automation, access boundaries, and the systems that let other developers ship and operate software safely.",
+      "href": "projects"
+    },
+    {
+      "index": "02",
+      "label": "Technical minor",
+      "title": "MLOps memory and inference systems",
+      "description": "Caching, context assembly, retrieval, invalidation, privacy, recomputation, and observability for open AI services—grounded in reproducible research and running systems.",
+      "href": "publications"
+    },
+    {
+      "index": "03",
+      "label": "Public practice",
+      "title": "Open-source DevRel and maintainership",
+      "description": "Contributor paths, documentation, technical talks, and community programmes derived from implementation rather than separated from it.",
+      "href": "talks"
+    }
+  ],
   "intro": {
     "heroName": "AYUSHMAN",
     "tagline": "PLATFORM",
