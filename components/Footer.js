@@ -12,6 +12,36 @@ export default function Footer({ profile, person }) {
           Start a conversation <span aria-hidden="true">↗</span>
         </a>
       </div>
+
+      <section className="portfolio-footer-community" aria-labelledby="portfolio-community-title">
+        <div>
+          <p className="portfolio-eyebrow">The portfolio system is open source</p>
+          <h3 id="portfolio-community-title">Support the project—or make it <em>your own.</em></h3>
+          <p>
+            If this format is useful, star the repository. To publish your own version,
+            fork it, replace the JSON content and portraits, then deploy the static export.
+          </p>
+        </div>
+        <div className="portfolio-footer-actions">
+          <a
+            className="portfolio-button portfolio-button-light"
+            href="https://github.com/elixpo/me.elixpo"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Star on GitHub <span aria-hidden="true">★</span>
+          </a>
+          <a
+            className="portfolio-button portfolio-button-ghost"
+            href="https://github.com/elixpo/me.elixpo/fork"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Fork your portfolio <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
+
       <div className="portfolio-footer-grid">
         <div>
           <strong>{profile.name || profile.siteName}</strong>
@@ -35,7 +65,7 @@ export default function Footer({ profile, person }) {
       </div>
       <div className="portfolio-footer-bottom">
         <span>© {year} {profile.name || profile.siteName}</span>
-        <span>Published through <a href="https://elixpo.com">Elixpo</a></span>
+        <span>Published through <a href="https://elixpo.com">Elixpo</a> · <a href="https://github.com/elixpo/me.elixpo">View source</a></span>
       </div>
     </footer>
   );
