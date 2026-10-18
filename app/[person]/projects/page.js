@@ -4,6 +4,7 @@ import PageHero from "@/components/PageHero";
 import PortfolioDataGraphic from "@/components/PortfolioDataGraphic";
 import ContactBanner from "@/components/ContactBanner";
 import ComingSoon from "@/components/ComingSoon";
+import MemberSectionJsonLd from "@/components/MemberSectionJsonLd";
 
 const safeGet = (person, file) => { try { return getPersonContent(person, file); } catch { return null; } };
 export async function generateMetadata({ params }) { const { person } = await params; return buildMemberMetadata({ person, section: "projects" }); }
@@ -20,7 +21,8 @@ export default async function ProjectsPage({ params }) {
   }, {})).sort((a, b) => b[1] - a[1]).map(([label, value]) => ({ label, value }));
 
   return <>
-    <PageHero person={person} eyebrow="Selected engineering work" title="Systems built to be" italic="used and inspected." description={data.description} facts={[{ value: data.projects.length, label: "selected projects" }, { value: languages.size, label: "primary languages" }]} />
+    <MemberSectionJsonLd person={person} section="projects" />
+    <PageHero person={person} image={`/assets/${person}/projects/stamp-2.webp`} imageAlt={`Project archive artwork for ${person}`} eyebrow="Selected engineering work" title="Systems built to be" italic="used and inspected." description={data.description} facts={[{ value: data.projects.length, label: "selected projects" }, { value: languages.size, label: "primary languages" }]} />
     <PortfolioDataGraphic eyebrow="Project composition" title="The tools behind the systems." description="A compact view of the primary implementation languages represented in this public project record." items={languageMetrics} />
     <section className="portfolio-section project-directory">
       <div className="portfolio-section-heading"><div><p className="portfolio-eyebrow">Public repositories and maintained systems</p><h2>Source, decisions, and <em>operational purpose.</em></h2></div></div>

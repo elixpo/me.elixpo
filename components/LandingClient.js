@@ -29,17 +29,30 @@ export default function LandingClient({ profiles }) {
       <section className="registry-hero">
         <div className="portfolio-geometry" aria-hidden="true"><i /><i /><i /><i /></div>
         <div className="registry-hero-copy">
-          <p className="portfolio-eyebrow">Elixpo / people and their public work</p>
-          <h1>Meet the people <em>behind the record.</em></h1>
+          <p className="portfolio-eyebrow">One directory / individual portfolios</p>
+          <h1>Meet the people behind Elixpo—and <em>inspect the work.</em></h1>
           <p>
-            Individual portfolios for Elixpo members, connecting projects, research,
-            talks, writing, and the public evidence behind each person’s work.
+            Find each member’s projects, research, talks, writing, experience, and
+            verified ways to connect—all in one public portfolio registry.
           </p>
         </div>
-        <div className="registry-count"><strong>{profiles.length}</strong><span>published profiles</span></div>
+        <aside className="registry-overview" aria-label="Portfolio registry overview">
+          <div className="registry-overview-count">
+            <strong>{profiles.length}</strong>
+            <span>published member portfolios</span>
+          </div>
+          <div className="registry-overview-faces" aria-hidden="true">
+            {profiles.slice(0, 4).map((profile) => (
+              <img key={profile.slug} src={`/assets/${profile.slug}/about/landing-card.webp`} alt="" />
+            ))}
+            {profiles.length > 4 && <b>+{profiles.length - 4}</b>}
+          </div>
+          <p>Projects · Research · Talks · Writing · Contact</p>
+          <a href="#member-directory">Explore the directory <span aria-hidden="true">↓</span></a>
+        </aside>
       </section>
 
-      <section className="registry-directory">
+      <section className="registry-directory" id="member-directory">
         <div className="registry-directory-heading">
           <div>
             <p className="portfolio-eyebrow">Member directory</p>

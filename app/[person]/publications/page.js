@@ -4,6 +4,7 @@ import PageHero from "@/components/PageHero";
 import PortfolioDataGraphic from "@/components/PortfolioDataGraphic";
 import ContactBanner from "@/components/ContactBanner";
 import ComingSoon from "@/components/ComingSoon";
+import MemberSectionJsonLd from "@/components/MemberSectionJsonLd";
 
 const safeGet = (person, file) => { try { return getPersonContent(person, file); } catch { return null; } };
 export async function generateMetadata({ params }) { const { person } = await params; return buildMemberMetadata({ person, section: "publications" }); }
@@ -18,7 +19,8 @@ export default async function PublicationsPage({ params }) {
     return counts;
   }, {})).sort(([a], [b]) => b.localeCompare(a)).map(([label, value]) => ({ label, value }));
   return <>
-    <PageHero person={person} eyebrow="Research / reproducible public work" title="Questions tested through" italic="artifacts and evidence." description={data.description} facts={[{ value: data.papers.length, label: "research records" }, { value: new Set(data.papers.map((paper) => paper.year)).size, label: "recorded years" }]} />
+    <MemberSectionJsonLd person={person} section="publications" />
+    <PageHero person={person} image={data.images?.[1] || `/assets/${person}/publication/sq-2.webp`} imageAlt={`Research archive artwork for ${person}`} eyebrow="Research / reproducible public work" title="Questions tested through" italic="artifacts and evidence." description={data.description} facts={[{ value: data.papers.length, label: "research records" }, { value: new Set(data.papers.map((paper) => paper.year)).size, label: "recorded years" }]} />
     <PortfolioDataGraphic eyebrow="Research timeline" title="Evidence accumulated over time." description="Publication activity grouped by recorded year, without treating preprints as peer-reviewed work." items={yearMetrics} />
     <section className="portfolio-section research-directory">
       <div className="portfolio-section-heading"><div><p className="portfolio-eyebrow">Published record</p><h2>Research stays connected to <em>what can be reproduced.</em></h2></div><p>Each entry preserves its authors, maturity, date, and available public surfaces. A preprint is not presented as peer review.</p></div>

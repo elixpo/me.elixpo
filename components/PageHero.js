@@ -1,4 +1,4 @@
-export default function PageHero({ person, memberName, eyebrow, title, italic, description, facts = [], children }) {
+export default function PageHero({ person, memberName, image, imageAlt, eyebrow, title, italic, description, facts = [], children }) {
   return (
     <section className="portfolio-page-hero">
       <div className="portfolio-geometry" aria-hidden="true">
@@ -19,8 +19,8 @@ export default function PageHero({ person, memberName, eyebrow, title, italic, d
         {person && (
           <figure className="portfolio-page-portrait">
             <img
-              src={`/assets/${person}/about/landing-card.webp`}
-              alt={`Portrait of ${memberName || person}`}
+              src={image || `/assets/${person}/about/landing-card.webp`}
+              alt={imageAlt || `Portrait of ${memberName || person}`}
               fetchPriority="high"
             />
           </figure>

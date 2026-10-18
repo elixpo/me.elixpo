@@ -3,6 +3,7 @@ import { buildMemberMetadata } from "@/lib/seo";
 import PageHero from "@/components/PageHero";
 import ContactBanner from "@/components/ContactBanner";
 import ComingSoon from "@/components/ComingSoon";
+import MemberSectionJsonLd from "@/components/MemberSectionJsonLd";
 
 const safeGet = (person, file, fallback = null) => { try { return getPersonContent(person, file); } catch { return fallback; } };
 export async function generateMetadata({ params }) { const { person } = await params; return buildMemberMetadata({ person, section: "about" }); }
@@ -14,7 +15,8 @@ export default async function AboutPage({ params }) {
   const profile = safeGet(person, "profile", {});
   if (!about?.intro) return <><ComingSoon title="About Coming Soon" /><ContactBanner person={person} /></>;
   return <>
-    <PageHero person={person} memberName={profile.name || profile.siteName} eyebrow="Background / current direction" title="A practice shaped by" italic="systems and communities." description={about.intro.description} facts={[{ value: work.length, label: "recorded roles" }, { value: "2023", label: "building with Elixpo since" }]} />
+    <MemberSectionJsonLd person={person} section="about" />
+    <PageHero person={person} memberName={profile.name || profile.siteName} image={person === "bhumika" ? "/assets/bhumika/bhumika-avatar.jpg" : `/assets/${person}/about/sq-11.webp`} eyebrow="Background / current direction" title="A practice shaped by" italic="systems and communities." description={about.intro.description} facts={[{ value: work.length, label: "recorded roles" }, { value: "2023", label: "building with Elixpo since" }]} />
     <section className="portfolio-section about-introduction">
       <figure><div className="about-image-field" /><img src={about.intro.portraitImage} alt={`Portrait of ${profile.name || profile.siteName}`} /></figure>
       <div><p className="portfolio-eyebrow">The practical direction</p><h2>{about.fancySection?.banner || "Build. Document. Share."}</h2><p>{about.fancySection?.content}</p><p>{about.fancySection?.contactNote}</p><a className="portfolio-button portfolio-button-dark" href={`/${person}/connect`}>Start a conversation ↗</a></div>

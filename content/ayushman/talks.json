@@ -70,6 +70,30 @@
       "location": "Kolkata, India",
       "status": "past",
       "link": "https://github.com/dscjisu/hacktoberfest-meetup-25"
+    },
+    {
+      "title": "Build with AI",
+      "venue": "GDG on Campus JIS University",
+      "date": "5 March 2025",
+      "location": "Kolkata, India",
+      "status": "past",
+      "link": "https://gdg.community.dev/events/details/google-gdg-on-campus-jis-university-kolkata-india-presents-build-with-ai-1/"
+    },
+    {
+      "title": "Tech Winter Break + GDG On Campus JIS University",
+      "venue": "GDG on Campus JIS University",
+      "date": "22 December 2024",
+      "location": "Kolkata, India",
+      "status": "past",
+      "link": "https://gdg.community.dev/events/details/google-gdg-on-campus-jis-university-kolkata-india-presents-tech-winter-break-gdg-on-campus-jis-university-1/cohost-gdg-on-campus-jis-university-kolkata-india/"
+    },
+    {
+      "title": "Version Control 101: Dive into Git & GitHub",
+      "venue": "GDG on Campus JIS University",
+      "date": "19 November 2024",
+      "location": "Kolkata, India",
+      "status": "past",
+      "link": "https://gdg.community.dev/events/details/google-gdg-on-campus-jis-university-kolkata-india-presents-version-control-101-dive-into-git-amp-github/"
     }
   ]
 }

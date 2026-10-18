@@ -1,6 +1,8 @@
 export default function PortfolioDataGraphic({ eyebrow, title, description, items = [] }) {
-  const visibleItems = items.filter((item) => item.value > 0).slice(0, 6);
-  const maximum = Math.max(...visibleItems.map((item) => item.value), 1);
+  const visibleItems = items
+    .filter((item) => item.label && Number.isFinite(Number(item.value)))
+    .slice(0, 6);
+  const maximum = Math.max(...visibleItems.map((item) => Number(item.value)), 1);
 
   if (visibleItems.length === 0) return null;
 
@@ -16,9 +18,18 @@ export default function PortfolioDataGraphic({ eyebrow, title, description, item
         <div className="portfolio-data-orbit" aria-hidden="true"><i /><i /><i /></div>
         <ol>
           {visibleItems.map((item, index) => (
-            <li key={item.label} style={{ "--metric-size": `${Math.max(12, (item.value / maximum) * 100)}%` }}>
-              <div><span>{String(index + 1).padStart(2, "0")}</span><strong>{item.label}</strong><b>{item.value}</b></div>
-              <i aria-hidden="true" />
+            <li key={item.label}>
+              <div className="portfolio-metric-heading">
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <strong>{item.label}</strong>
+              </div>
+              <div className="portfolio-metric-value">
+                <b>{item.value}</b>
+                <small>recorded</small>
+              </div>
+              <div className="portfolio-metric-track" aria-hidden="true">
+                <i style={{ width: `${Math.max(4, (Number(item.value) / maximum) * 100)}%` }} />
+              </div>
             </li>
           ))}
         </ol>

@@ -11,7 +11,7 @@ export const metadata = {
   publisher: "Elixpo",
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, noimageindex: false, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
   manifest: "/site.webmanifest",
-  openGraph: { type: "website", siteName: "Elixpo Member Portfolios", url: "/", locale: "en_IN", title: LANDING_TITLE, description: LANDING_DESCRIPTION, images: [{ url: "/og-image.webp", width: 1200, height: 630, alt: "Elixpo member portfolios" }] },
+  openGraph: { type: "website", siteName: "Elixpo Member Portfolios", url: "/", locale: "en_IN", title: LANDING_TITLE, description: LANDING_DESCRIPTION, images: [{ url: "/og-image.webp", width: 1280, height: 720, alt: "Elixpo member portfolios" }] },
   twitter: { card: "summary_large_image", title: LANDING_TITLE, description: LANDING_DESCRIPTION, images: ["/og-image.webp"] },
   metadataBase: new URL("https://me.elixpo.com"),
 };

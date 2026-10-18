@@ -4,6 +4,7 @@ import PageHero from "@/components/PageHero";
 import PortfolioDataGraphic from "@/components/PortfolioDataGraphic";
 import ContactBanner from "@/components/ContactBanner";
 import ComingSoon from "@/components/ComingSoon";
+import MemberSectionJsonLd from "@/components/MemberSectionJsonLd";
 
 const safeGet = (person, file) => { try { return getPersonContent(person, file); } catch { return null; } };
 const formatDate = (iso) => { const date = new Date(iso); return Number.isNaN(date.valueOf()) ? iso : date.toLocaleDateString("en-IN", { year: "numeric", month: "short", day: "numeric" }); };
@@ -18,7 +19,8 @@ export default async function BlogsPage({ params }) {
     return counts;
   }, {})).sort((a, b) => b[1] - a[1]).map(([label, value]) => ({ label, value }));
   return <>
-    <PageHero person={person} eyebrow="Writing / technical notes" title="Documentation that preserves" italic="the useful part." description={data.description} facts={[{ value: data.posts.length, label: "published posts" }]}>
+    <MemberSectionJsonLd person={person} section="blogs" />
+    <PageHero person={person} image={`/assets/${person}/websiteSection/human-think1.webp`} imageAlt={`Writing archive artwork for ${person}`} eyebrow="Writing / technical notes" title="Documentation that preserves" italic="the useful part." description={data.description} facts={[{ value: data.posts.length, label: "published posts" }]}>
       {data.home && <a className="portfolio-button portfolio-button-dark" href={data.home} target="_blank" rel="noreferrer">Visit LixBlogs ↗</a>}
     </PageHero>
     <PortfolioDataGraphic eyebrow="Writing themes" title="Topics that recur in the record." description="The most frequent subjects across published technical notes and essays." items={topicMetrics} />

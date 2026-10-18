@@ -21,7 +21,7 @@ export default async function HomePage({ params }) {
   const work = safeGet(person, "work", []) || [];
   const profileJsonLd = buildMemberProfileJsonLd(person);
   const hero = home.hero || {};
-  const portrait = `/assets/${person}/about/landing-card.webp`;
+  const portrait = hero.portrait || `/assets/${person}/about/landing-card.webp`;
   const chapterLabels = {
     About: ["Origin", "Background, experience, and the direction behind the work."],
     Projects: ["Build", "Systems, repositories, and projects that can be inspected."],
