@@ -57,6 +57,13 @@ export default function MemberHeader({ person, profile }) {
               </a>
             );
           })}
+          <a
+            className="portfolio-directory-link"
+            href="/"
+            aria-label="Browse all Elixpo member portfolios"
+          >
+            All members <span aria-hidden="true">↗</span>
+          </a>
           <a className="portfolio-elixpo-link" href="https://elixpo.com" target="_blank" rel="noreferrer">
             Elixpo.com <span aria-hidden="true">↗</span>
           </a>
