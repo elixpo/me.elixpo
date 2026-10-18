@@ -7,7 +7,15 @@
       "venue": "Techno India University",
       "date": "23rd August 2026",
       "location": "Kolkata, India",
-      "status": "upcoming"
+      "status": "past",
+      "link": "https://lnkd.in/p/dEu--zVF"
+    },
+    {
+      "title": "GitHub Actions Is Your First Reviewer",
+      "venue": "Open Source Connect India",
+      "date": "28 September 2026",
+      "location": "Remote",
+      "status": "past"
     },
     {
       "title": "Know Your Terminal: Zero to Hero on Bash Programming",
@@ -23,7 +31,7 @@
       "date": "10 July 2026",
       "location": "Remote",
       "status": "past",
-      "link" : "www.youtube.com/watch?v=apxwKja5JWE"
+      "link": "https://www.youtube.com/watch?v=apxwKja5JWE"
     },
     {
       "title": "Understanding Prompt Injection Attacks in LLMs (organized — first offline cross-collab)",
