@@ -1,6 +1,7 @@
 import { getPersonContent } from "@/lib/content";
 import { buildMemberMetadata } from "@/lib/seo";
 import PageHero from "@/components/PageHero";
+import PortfolioDataGraphic from "@/components/PortfolioDataGraphic";
 import ContactBanner from "@/components/ContactBanner";
 import ComingSoon from "@/components/ComingSoon";
 
@@ -11,8 +12,14 @@ export default async function PublicationsPage({ params }) {
   const { person } = await params;
   const data = safeGet(person, "publications");
   if (!data?.papers?.length) return <><ComingSoon title="Research Coming Soon" /><ContactBanner person={person} /></>;
+  const yearMetrics = Object.entries(data.papers.reduce((counts, paper) => {
+    const year = String(paper.year || "Undated");
+    counts[year] = (counts[year] || 0) + 1;
+    return counts;
+  }, {})).sort(([a], [b]) => b.localeCompare(a)).map(([label, value]) => ({ label, value }));
   return <>
     <PageHero person={person} eyebrow="Research / reproducible public work" title="Questions tested through" italic="artifacts and evidence." description={data.description} facts={[{ value: data.papers.length, label: "research records" }, { value: new Set(data.papers.map((paper) => paper.year)).size, label: "recorded years" }]} />
+    <PortfolioDataGraphic eyebrow="Research timeline" title="Evidence accumulated over time." description="Publication activity grouped by recorded year, without treating preprints as peer-reviewed work." items={yearMetrics} />
     <section className="portfolio-section research-directory">
       <div className="portfolio-section-heading"><div><p className="portfolio-eyebrow">Published record</p><h2>Research stays connected to <em>what can be reproduced.</em></h2></div><p>Each entry preserves its authors, maturity, date, and available public surfaces. A preprint is not presented as peer review.</p></div>
       <div className="research-records">{data.papers.map((paper, index) => <article key={paper.title}>

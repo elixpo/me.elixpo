@@ -1,6 +1,7 @@
 import { getPersonContent } from "@/lib/content";
 import { buildMemberMetadata } from "@/lib/seo";
 import PageHero from "@/components/PageHero";
+import PortfolioDataGraphic from "@/components/PortfolioDataGraphic";
 import ContactBanner from "@/components/ContactBanner";
 import ComingSoon from "@/components/ComingSoon";
 
@@ -12,9 +13,15 @@ export default async function ProjectsPage({ params }) {
   const data = safeGet(person, "projects");
   if (!data?.projects?.length) return <><ComingSoon title="Projects Coming Soon" /><ContactBanner person={person} /></>;
   const languages = new Set(data.projects.map((project) => project.language).filter(Boolean));
+  const languageMetrics = Object.entries(data.projects.reduce((counts, project) => {
+    const language = project.language || "Other";
+    counts[language] = (counts[language] || 0) + 1;
+    return counts;
+  }, {})).sort((a, b) => b[1] - a[1]).map(([label, value]) => ({ label, value }));
 
   return <>
     <PageHero person={person} eyebrow="Selected engineering work" title="Systems built to be" italic="used and inspected." description={data.description} facts={[{ value: data.projects.length, label: "selected projects" }, { value: languages.size, label: "primary languages" }]} />
+    <PortfolioDataGraphic eyebrow="Project composition" title="The tools behind the systems." description="A compact view of the primary implementation languages represented in this public project record." items={languageMetrics} />
     <section className="portfolio-section project-directory">
       <div className="portfolio-section-heading"><div><p className="portfolio-eyebrow">Public repositories and maintained systems</p><h2>Source, decisions, and <em>operational purpose.</em></h2></div></div>
       <div className="project-directory-list">
