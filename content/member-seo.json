@@ -270,5 +270,46 @@
       "IEM Kolkata",
       "IEEE EMBS"
     ]
+  },
+  "krishnendu": {
+    "title": "Krishnendu Dutta — Full Stack Developer & AI Engineer | Elixpo",
+    "description": "Krishnendu Dutta is a full-stack developer, AI engineer, FlyRank AI intern, and open-source contributor building real-time web applications, AI codebase intelligence tools, and developer utilities.",
+    "givenName": "Krishnendu",
+    "familyName": "Dutta",
+    "jobTitle": "Full Stack Developer, Open Source Contributor, and AI Engineer",
+    "aliases": [
+      "Krishnendu",
+      "dev-krish"
+    ],
+    "keywords": [
+      "full-stack developer",
+      "AI engineer",
+      "open source contributor",
+      "FlyRank AI intern",
+      "Upblit core member",
+      "React",
+      "Next.js",
+      "Node.js",
+      "MongoDB",
+      "Python",
+      "Elixpo"
+    ],
+    "knowsAbout": [
+      "Full-Stack Development",
+      "Artificial Intelligence",
+      "Open Source",
+      "React",
+      "Next.js",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Python",
+      "LLM APIs"
+    ],
+    "affiliations": [
+      "FlyRank AI",
+      "Elixpo",
+      "Upblit"
+    ]
   }
 }
