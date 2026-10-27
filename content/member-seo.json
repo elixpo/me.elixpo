@@ -37,11 +37,21 @@
       "AI Caching"
     ],
     "affiliations": [
-      "Myceli AI",
       "Pollinations AI",
       "GitHub Maintainer Advisory",
-      "Elixpo",
-      "JIS University"
+      "Elixpo"
+    ],
+    "worksFor": {
+      "name": "Myceli AI",
+      "url": "https://myceli.ai"
+    },
+    "alumniOf": {
+      "name": "JIS University",
+      "url": "https://www.jisuniversity.ac.in"
+    },
+    "sameAs": [
+      "https://orcid.org/0009-0006-5960-6308",
+      "https://blogs.elixpo.com/elixpohere"
     ]
   },
   "anwesha": {
