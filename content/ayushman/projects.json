@@ -1,11 +1,11 @@
 {
   "heading": "PROJECTS",
-  "description": "Selected systems across open-source AI, trustworthy developer tooling, release engineering, organization automation, reliability, memory infrastructure, and measured computing research. Star counts are a snapshot from 18 October 2026.",
+  "description": "Selected systems across open-source AI, trustworthy developer tooling, release engineering, organization automation, reliability, memory infrastructure, and measured computing research. Star counts are a snapshot from 27 October 2026.",
   "projects": [
     {
       "name": "pollinations",
       "description": "An open-source generative AI platform where I maintain contributor rewards, triage automation, application workflows, model curation, and developer tooling.",
-      "stars": 5219,
+      "stars": 5247,
       "url": "https://github.com/pollinations/pollinations",
       "owner": "pollinations",
       "ownerLogo": "https://avatars.githubusercontent.com/u/86964862?v=4",
@@ -15,19 +15,19 @@
     {
       "name": "crumb.elixpo",
       "displayName": "Crumb",
-      "description": "A self-hosted Rust terminal agent with explicit permissions, isolated tools, supervised MCP execution, signed skill distribution, rollback, and revocation. Its execution-receipt workflow remains under validation.",
+      "description": "A self-hosted Rust terminal agent with explicit permissions, isolated tools, supervised MCP execution, signed skill distribution, rollback, and revocation. Debian packaging is in progress on Salsa (ITP #1151280); its execution-receipt workflow remains under validation.",
       "stars": 3,
       "url": "https://github.com/elixpo/crumb.elixpo",
       "owner": "elixpo",
       "ownerLogo": "https://avatars.githubusercontent.com/u/161109909?v=4",
-      "topics": ["rust", "developer-tools", "agent-infrastructure", "security"],
+      "topics": ["rust", "developer-tools", "agent-infrastructure", "security", "debian"],
       "language": "Rust"
     },
     {
       "name": "search.elixpo",
       "displayName": "OreoLook",
       "description": "An OpenAI-compatible web-search and research system with Redis-backed conversational memory, semantic caching, retrieval, MCP tools, streaming responses, citations, and reproducible evaluation artifacts.",
-      "stars": 23,
+      "stars": 24,
       "url": "https://github.com/pollinations/search.elixpo",
       "owner": "pollinations",
       "ownerLogo": "https://avatars.githubusercontent.com/u/86964862?v=4",
@@ -37,7 +37,7 @@
     {
       "name": "packages.elixpo",
       "displayName": "Elixpo Packages",
-      "description": "The source, release, signed APT distribution, and public catalogue for independently versioned Elixpo Linux applications, with candidate deployments and rollback documentation.",
+      "description": "The source, release, signed APT distribution, and public catalogue for independently versioned Elixpo Linux applications, with candidate deployments and rollback documentation. Selected for the XERJ Corpus Hub (in licence review).",
       "stars": 4,
       "url": "https://github.com/elixpo/packages.elixpo",
       "owner": "elixpo",
@@ -77,6 +77,39 @@
       "ownerLogo": "https://avatars.githubusercontent.com/u/161109909?v=4",
       "topics": ["linux", "zephyr", "real-time-systems", "systems-research"],
       "language": "Python"
+    },
+    {
+      "name": "blogs.elixpo",
+      "displayName": "LixBlogs",
+      "description": "An operated, community-developed publishing platform with real-time collaborative editing, multi-tenant publications, Markdown, SEO, and API and CLI automation on Cloudflare.",
+      "stars": 13,
+      "url": "https://github.com/elixpo/blogs.elixpo",
+      "owner": "elixpo",
+      "ownerLogo": "https://avatars.githubusercontent.com/u/161109909?v=4",
+      "topics": ["publishing", "collaboration", "cloudflare", "open-source-community"],
+      "language": "JavaScript"
+    },
+    {
+      "name": "sketch.elixpo",
+      "displayName": "LixSketch",
+      "description": "An open SVG whiteboard engine and React canvas with a hand-drawn visual system for sketches, diagrams, documents, and presentations.",
+      "stars": 10,
+      "url": "https://github.com/elixpo/sketch.elixpo",
+      "owner": "elixpo",
+      "ownerLogo": "https://avatars.githubusercontent.com/u/161109909?v=4",
+      "topics": ["canvas", "svg", "react", "developer-tools"],
+      "language": "JavaScript"
+    },
+    {
+      "name": "accounts.elixpo",
+      "displayName": "Elixpo Accounts",
+      "description": "Shared OAuth 2.0 and OpenID Connect identity infrastructure for Elixpo services, with SSO, passkeys, webhooks, and an edge-safe TypeScript SDK.",
+      "stars": 8,
+      "url": "https://github.com/elixpo/accounts.elixpo",
+      "owner": "elixpo",
+      "ownerLogo": "https://avatars.githubusercontent.com/u/161109909?v=4",
+      "topics": ["identity", "oidc", "cloudflare", "security"],
+      "language": "TypeScript"
     }
   ]
 }
