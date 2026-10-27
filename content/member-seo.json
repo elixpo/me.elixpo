@@ -1,40 +1,47 @@
 {
   "ayushman": {
-    "title": "Ayushman Bhattacharya — Open Source & DevRel | Elixpo",
-    "description": "Ayushman Bhattacharya is an open-source maintainer and DevRel engineer focused on DevOps, MLOps, release engineering, automation and developer tooling.",
+    "title": "Ayushman Bhattacharya — Developer Relations & Open-Source Maintainer | Elixpo",
+    "description": "Ayushman Bhattacharya works in developer relations at Myceli AI and maintains Pollinations.ai as a GitHub Maintainer Advisory member, focused on DevOps and developer tooling.",
     "givenName": "Ayushman",
     "familyName": "Bhattacharya",
-    "jobTitle": "Open-Source Maintainer and DevRel Engineer",
+    "jobTitle": "Developer Relations & Open-Source Maintainer",
     "aliases": [
       "Ayushman",
       "Circuit-Overtime",
       "elixpo"
     ],
     "keywords": [
-      "open source maintainer",
       "developer relations",
       "DevRel",
+      "open source maintainer",
+      "GitHub Maintainer Advisory",
       "DevOps",
-      "MLOps",
+      "platform engineering",
+      "developer experience",
+      "GitHub Actions",
       "release engineering",
-      "developer tooling",
-      "automation",
+      "Debian packaging",
       "Pollinations AI",
       "Myceli AI"
     ],
     "knowsAbout": [
-      "Open Source",
       "Developer Relations",
+      "Open Source",
       "DevOps",
-      "MLOps",
-      "Release Engineering",
+      "Platform Engineering",
+      "Developer Experience",
+      "GitHub Actions",
       "CI/CD",
-      "Developer Tooling"
+      "Release Engineering",
+      "Debian Packaging",
+      "AI Caching"
     ],
     "affiliations": [
-      "Elixpo",
+      "Myceli AI",
       "Pollinations AI",
-      "Myceli AI"
+      "GitHub Maintainer Advisory",
+      "Elixpo",
+      "JIS University"
     ]
   },
   "anwesha": {
