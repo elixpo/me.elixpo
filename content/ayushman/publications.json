@@ -7,6 +7,18 @@
   ],
   "papers": [
     {
+      "title": "QFabric: Guarded Cross-Domain Task Recovery and Its Limits on a Linux-RTOS Board",
+      "authors": "Ayushman Bhattacharya and Anwesha Chakraborty",
+      "status": "arXiv preprint · arXiv:2611.01598",
+      "year": "2026",
+      "isNew": true,
+      "links": [
+        { "label": "arXiv", "url": "https://arxiv.org/abs/2611.01598" },
+        { "label": "Code", "url": "https://github.com/elixpo/qfabric" },
+        { "label": "Zenodo", "url": "https://doi.org/10.5281/zenodo.23692354" }
+      ]
+    },
+    {
       "title": "A Three-Layer Caching Architecture for Low-Latency LLM Web Search on Commodity CPU Hardware",
       "authors": "Ayushman Bhattacharya and Nihal Gazi",
       "status": "arXiv preprint · arXiv:2609.05463",
