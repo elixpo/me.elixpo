@@ -7,15 +7,29 @@
   ],
   "papers": [
     {
+      "title": "QFabric: Guarded Cross-Domain Task Recovery and Its Limits on a Linux-RTOS Board",
+      "authors": "Ayushman Bhattacharya and Anwesha Chakraborty",
+      "status": "arXiv preprint · arXiv:2611.01598",
+      "year": "2026",
+      "isNew": true,
+      "links": [
+        { "label": "arXiv", "url": "https://arxiv.org/abs/2611.01598" },
+        { "label": "Code", "url": "https://github.com/elixpo/qfabric" },
+        { "label": "Zenodo", "url": "https://doi.org/10.5281/zenodo.23692354" }
+      ]
+    },
+    {
       "title": "RV565: Cross-Layer Co-Design for Frame-Independent Video Playback on MicroPython-Class ESP32-S3 Systems",
       "authors": "Ayushman Bhattacharya and Anwesha Chakraborty",
-      "status": "arXiv preprint · arXiv:2610.35935 · cs.AR",
+      "status": "arXiv preprint · arXiv:2610.35935",
       "year": "2026",
       "isNew": true,
       "links": [
         { "label": "arXiv", "url": "https://arxiv.org/abs/2610.35935" },
         { "label": "Artifact (Zenodo)", "url": "https://doi.org/10.5281/zenodo.23543367" },
         { "label": "Source", "url": "https://github.com/elixpo/oreo/tree/main/paper" }
+        { "label": "Code", "url": "https://github.com/elixpo/oreo" },
+        { "label": "Zenodo", "url": "https://doi.org/10.5281/zenodo.23543367" }
       ]
     },
     {
