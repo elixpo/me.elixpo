@@ -113,10 +113,10 @@
     },
     {
       "name": "oreo",
-      "displayName": "Oreo",
-      "description": "An open hardware badge, operated site, and research platform running OreoOS: a MicroPython OS for an ESP32-S3 with apps, OTA updates, device drivers, KiCad hardware, and a DMA-aware RGB565 video pipeline. Its RV565 video pipeline is described in arXiv:2610.35935.",
+      "displayName": "Falera",
+      "description": "An open hardware badge, operated site, and research platform running FaleraOS: a MicroPython OS for an ESP32-S3 with apps, OTA updates, device drivers, KiCad hardware, and a DMA-aware RGB565 video pipeline. Its RV565 video pipeline is described in arXiv:2610.35935.",
       "stars": 8,
-      "url": "https://github.com/elixpo/oreo",
+      "url": "https://github.com/elixpo/falera",
       "owner": "elixpo",
       "ownerLogo": "https://avatars.githubusercontent.com/u/161109909?v=4",
       "topics": ["open-hardware", "micropython", "esp32", "embedded"],

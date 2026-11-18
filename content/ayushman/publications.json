@@ -27,8 +27,8 @@
       "links": [
         { "label": "arXiv", "url": "https://arxiv.org/abs/2610.35935" },
         { "label": "Artifact (Zenodo)", "url": "https://doi.org/10.5281/zenodo.23543367" },
-        { "label": "Source", "url": "https://github.com/elixpo/oreo/tree/main/paper" }
-        { "label": "Code", "url": "https://github.com/elixpo/oreo" },
+        { "label": "Source", "url": "https://github.com/elixpo/falera/tree/main/paper" }
+        { "label": "Code", "url": "https://github.com/elixpo/falera" },
         { "label": "Zenodo", "url": "https://doi.org/10.5281/zenodo.23543367" }
       ]
     },
