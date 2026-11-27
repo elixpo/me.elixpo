@@ -158,6 +158,10 @@ source is MIT.
 
 1. Create a new directory under `content/` with the member's name.
 2. Add the required JSON files: `profile.json`, `home.json`, `about.json`, `projects.json`, `publications.json`, `spotlight.json`, `recommendations.json`, `work.json`, `connect.json`.
+   In `profile.json`, `birthday` is optional: `"MM-DD"` (no year), or `null`. On that day, in
+   India time, the member's pages show a birthday banner and the landing page points to them.
+   Also add the date to `birthdays` in agent.elixpo's `config/festivals.yaml` so every Elixpo
+   site celebrates. Preview with `?birthday=preview` or `?birthday=<name>`.
 3. Add assets under `public/assets/{name}/`.
 4. The member's portfolio will be available at `/{name}`.
 5. Submit a PR with the new content and assets, and we'll review it for deployment.
