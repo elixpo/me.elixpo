@@ -30,8 +30,6 @@ jobs:
         NEXT_TELEMETRY_DISABLED=1
       build-command: ./deploy.sh build
       output-directory: out
-      # Birthday wish counter (functions/api/wishes); migrations live in ./migrations.
-      d1-database: elixpome
       environment: production
     secrets:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

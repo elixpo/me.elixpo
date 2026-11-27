@@ -162,9 +162,10 @@ source is MIT.
    India time, the member's pages show a birthday banner and the landing page points to them.
    Also add the date to `birthdays` in agent.elixpo's `config/festivals.yaml` so every Elixpo
    site celebrates. Preview with `?birthday=preview` or `?birthday=<name>`.
-   The banner's "Send a wish" counter is served by `functions/api/wishes/[slug].js` (D1
-   `elixpome`). To try it locally, run `npx wrangler d1 migrations apply elixpome --local`, then
-   `npx wrangler pages dev public --port 8788` beside `NEXT_PUBLIC_WISHES_API=http://localhost:8788 npm run dev`.
+   The banner's "Send a wish" counter is served by `functions/api/wishes/[slug].js`. Wishes are
+   stored on the member's Elixpo account (`users.birthday_wishes` in the accounts database), so
+   the member needs an account with `member = 1` and `portfolio_slug` set (accounts.elixpo
+   migration 0028). Locally, point `NEXT_PUBLIC_WISHES_API` at a `wrangler pages dev` server.
 3. Add assets under `public/assets/{name}/`.
 4. The member's portfolio will be available at `/{name}`.
 5. Submit a PR with the new content and assets, and we'll review it for deployment.

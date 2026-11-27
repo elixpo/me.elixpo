@@ -57,6 +57,7 @@ export default function WishCounter({ slug, name }) {
     flushing.current = true;
     try {
       const response = await fetch(`${API}/api/wishes/${slug}`, { method: "POST", headers: { "Content-Type": "application/json" }, body });
+      if (response.status === 409) return; // no Elixpo account linked to this portfolio yet: drop the batch
       if (response.status === 429) throw new Error("throttled");
       if (!response.ok) throw new Error(String(response.status));
       // Wishes the server throttle dropped are not retried.
