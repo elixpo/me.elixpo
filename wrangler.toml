@@ -1,3 +1,11 @@
 name = "elixpome"
 compatibility_date = "2025-09-23"
 pages_build_output_dir = "out"
+
+# Birthday wish counter (functions/api/wishes). Migrations in ./migrations are applied by the
+# production deploy before each release.
+[[d1_databases]]
+binding = "WISHES_DB"
+database_name = "elixpome"
+database_id = "REPLACE_WITH_ELIXPOME_D1_ID"
+migrations_dir = "migrations"

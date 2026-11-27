@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import WishCounter from "@/components/WishCounter";
 
 // Birthdays are "MM-DD" in each profile.json and follow Elixpo's festive calendar timezone.
 const TIMEZONE = "Asia/Kolkata";
@@ -61,7 +62,7 @@ export function MemberBirthday({ person, profile }) {
   const [celebrating] = useBirthdays([{ slug: person, ...profile }]);
   if (!celebrating) return null;
   const name = firstName(profile);
-  const wish = profile.email ? `mailto:${profile.email}?subject=${encodeURIComponent(`Happy birthday, ${name}! 🎂`)}` : null;
+  const email = profile.email ? `mailto:${profile.email}?subject=${encodeURIComponent(`Happy birthday, ${name}! 🎂`)}` : null;
   return (
     <>
       <ConfettiBurst />
@@ -71,8 +72,9 @@ export function MemberBirthday({ person, profile }) {
           <p className="birthday-banner-eyebrow">Today at Elixpo</p>
           <h2>Happy birthday, {name}!</h2>
           <p>The whole Elixpo crew is celebrating today. Lumi has the party hat on.</p>
+          {email && <a className="birthday-banner-email" href={email}>or write {name} a note ↗</a>}
         </div>
-        {wish && <a className="birthday-banner-cta" href={wish}>Send a wish <span aria-hidden="true">↗</span></a>}
+        <WishCounter slug={person} name={name} />
       </section>
     </>
   );
