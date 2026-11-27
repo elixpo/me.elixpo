@@ -1544,7 +1544,8 @@ textarea::-webkit-scrollbar-track {
   display: flex;
   align-items: center;
   gap: 1.25rem;
-  margin: 1.5rem auto;
+  /* Clear the fixed member nav (.portfolio-nav-wrap). */
+  margin: 7.75rem auto 1.5rem;
   width: min(1180px, calc(100% - 2rem));
   padding: 1.25rem 1.5rem;
   border: 2px solid var(--portfolio-ink);
