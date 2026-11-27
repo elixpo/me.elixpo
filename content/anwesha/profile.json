@@ -3,6 +3,7 @@
   "siteName": "Anwesha",
   "siteDescription": "Designer at Elixpo",
   "location": "WB,IN",
+  "birthday": "11-29",
   "email": "anwesha@elixpo.com",
   "socials": [
     { "platform": "github", "url": "https://github.com/CSE-Anwesha", "icon": "logo-github" },
