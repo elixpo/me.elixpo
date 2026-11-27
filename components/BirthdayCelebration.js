@@ -1,14 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import WishCounter from "@/components/WishCounter";
 
 // Birthdays are "MM-DD" in each profile.json and follow Elixpo's festive calendar timezone.
 const TIMEZONE = "Asia/Kolkata";
+// Birthdays start one minute early (23:59 the night before), and open pages re-check every 30s.
+const LEAD_MS = 60 * 1000;
+const RECHECK_MS = 30 * 1000;
 const CONFETTI_COLORS = ["#ff6fae", "#ffd166", "#7dd3fc", "#a78bfa", "#34d399", "#e76043"];
 
 function todayMonthDay() {
-  const parts = new Intl.DateTimeFormat("en-CA", { timeZone: TIMEZONE, month: "2-digit", day: "2-digit" }).formatToParts(new Date());
+  const parts = new Intl.DateTimeFormat("en-CA", { timeZone: TIMEZONE, month: "2-digit", day: "2-digit" }).formatToParts(new Date(Date.now() + LEAD_MS));
   const get = (type) => parts.find((part) => part.type === type).value;
   return `${get("month")}-${get("day")}`;
 }
@@ -19,9 +22,17 @@ function useBirthdays(people) {
   useEffect(() => {
     const preview = new URLSearchParams(window.location.search).get("birthday");
     const withBirthday = people.filter((person) => person.birthday);
-    const today = todayMonthDay();
     const forced = preview && withBirthday.filter((person) => preview === "preview" || person.slug === preview);
-    setCelebrating(forced?.length ? (preview === "preview" ? withBirthday.slice(0, 1) : forced) : withBirthday.filter((person) => person.birthday === today));
+    if (forced?.length) { setCelebrating(preview === "preview" ? withBirthday.slice(0, 1) : forced); return; }
+    const check = () => {
+      const today = todayMonthDay();
+      const next = withBirthday.filter((person) => person.birthday === today);
+      // Keep the same array while nothing changes so the banner does not re-mount.
+      setCelebrating((current) => (current.map((p) => p.slug).join() === next.map((p) => p.slug).join() ? current : next));
+    };
+    check();
+    const timer = window.setInterval(check, RECHECK_MS);
+    return () => window.clearInterval(timer);
   }, [people]);
   return celebrating;
 }
@@ -57,11 +68,25 @@ function ConfettiBurst() {
   );
 }
 
+// Lumi's birthday lines; one is picked per visit.
+const BIRTHDAY_QUIPS = [
+  (name) => `Lumi already ate the first slice of ${name}'s cake. And the second. Allegedly.`,
+  (name) => `Lumi tried to sing for ${name}. The neighbours have filed a complaint.`,
+  (name) => `${name} is officially one bug older. No rollback available.`,
+  (name) => `Lumi wrapped ${name}'s present in bamboo. It's also bamboo.`,
+  (name) => `Lumi says the candles count as a production incident. ${name}, blow them out quickly.`,
+  (name) => `Today's standup is cancelled. ${name} is in charge of cake, Lumi is in charge of eating it.`,
+];
+
 /** Member pages: a celebration banner and a confetti burst on the member's own birthday. */
 export function MemberBirthday({ person, profile }) {
-  const [celebrating] = useBirthdays([{ slug: person, ...profile }]);
+  const [celebrating] = useBirthdays(useMemo(() => [{ slug: person, ...profile }], [person, profile]));
+  // Picked on the client only, so a random line cannot mismatch hydration.
+  const [quipIndex, setQuipIndex] = useState(0);
+  useEffect(() => setQuipIndex(Math.floor(Math.random() * BIRTHDAY_QUIPS.length)), []);
   if (!celebrating) return null;
   const name = firstName(profile);
+  const quip = BIRTHDAY_QUIPS[quipIndex](name);
   const email = profile.email ? `mailto:${profile.email}?subject=${encodeURIComponent(`Happy birthday, ${name}! 🎂`)}` : null;
   return (
     <>
@@ -71,7 +96,7 @@ export function MemberBirthday({ person, profile }) {
         <div>
           <p className="birthday-banner-eyebrow">Today at Elixpo</p>
           <h2>Happy birthday, {name}!</h2>
-          <p>The whole Elixpo crew is celebrating today. Lumi has the party hat on.</p>
+          <p>{quip}</p>
           {email && <a className="birthday-banner-email" href={email}>or write {name} a note ↗</a>}
         </div>
         <WishCounter slug={person} name={name} />
